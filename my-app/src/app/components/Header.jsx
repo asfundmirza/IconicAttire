@@ -4,6 +4,7 @@ import Wrapper from "./Wrapper";
 
 import Link from "next/link";
 import Menu from "./Menu";
+import Sitelogo from "../../../public/logo.png"
 
 import { IoMdHeartEmpty } from "react-icons/io";
 import { BsCart } from "react-icons/bs";
@@ -17,18 +18,18 @@ const Header = () => {
   const [showSubMenu, setShowSubMenu] = useState(null);
 
   return (
-    <header className="w-full h-[50px] md:h-[80px] bg-white  flex items-center shadow-lg justify-between top-0 sticky">
+    <header className="w-full h-[50px] md:h-[80px] bg-primary-color  flex items-center shadow-lg justify-between top-0 sticky">
       <Wrapper className="h-[60px] flex justify-between items-center">
         <Link href="/">
-          {/* <img src="/logo.svg" className="w-[40px] md:w-[60px]" /> */}
-          Iconic Attire
+          {/* <img src={Sitelogo} className="w-[40px] md:w-[60px]" /> */}
+          <h2 className="text-secondary-color">Iconic Attire</h2>
         </Link>
 
         <Menu showSubMenu={showSubMenu} setShowSubMenu={setShowSubMenu} />
 
         {mobileMenu && <MenuMobile />}
 
-        <div className="flex items-center gap-2 text-black">
+        <div className="flex items-center gap-2 text-white">
           {/* Icon start */}
           <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
             <IoMdHeartEmpty className="text-[19px] md:text-[24px]" />
