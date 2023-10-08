@@ -25,7 +25,7 @@ const Menu = ({ showSubMenu, setShowSubMenu }) => {
   };
 
   return (
-    <ul className="hidden md:flex items-center gap-8 font-medium text-black">
+    <ul className="hidden md:flex items-center gap-8 font-medium text-white">
       {data.map((item) => (
         <li
           key={item.id}
@@ -35,9 +35,9 @@ const Menu = ({ showSubMenu, setShowSubMenu }) => {
         >
           {item.subMenu ? (
             <div
-              className={`group-hover:block ${
+              className={`group-hover:block  ${
                 showSubMenu === item.id ? "block" : "hidden"
-              } absolute top-full left-0 bg-white w-48 py-2 shadow-lg`}
+              } absolute top-full left-0 bg-primary-color rounded-lg w-48 py-3 shadow-lg px-3`}
             >
               {item.name === "Tops"
                 ? subMenuDataTops.map((subItem, index) => (
@@ -45,14 +45,14 @@ const Menu = ({ showSubMenu, setShowSubMenu }) => {
                       key={subItem.id}
                       href={`/category/${subItem.name}`}
                       onClick={subMenuHandler}
-                      className={`text-black py-2 px-4 flex justify-between items-center ${
+                      className={`text-white py-3  flex justify-between items-center ${
                         index !== subMenuDataTops.length - 1
                           ? "border-b border-gray-300"
                           : ""
                       }`}
                     >
                       <span>{subItem.name}</span>
-                      <span className="text-gray-600">{subItem.doc_count}</span>
+                      <span className="text-white">{subItem.doc_count}</span>
                     </Link>
                   ))
                 : item.name === "Bottoms"
@@ -61,14 +61,14 @@ const Menu = ({ showSubMenu, setShowSubMenu }) => {
                       key={subItem.id}
                       href={`/category/${subItem.name}`}
                       onClick={subMenuHandler}
-                      className={`text-black py-2 px-4 flex justify-between items-center ${
+                      className={`text-white py-3 flex justify-between items-center ${
                         index !== subMenuDataTops.length - 1
                           ? "border-b border-gray-300"
                           : ""
                       }`}
                     >
                       <span>{subItem.name}</span>
-                      <span className="text-gray-600">{subItem.doc_count}</span>
+                      <span className="text-white">{subItem.doc_count}</span>
                     </Link>
                   ))
                 : null}
