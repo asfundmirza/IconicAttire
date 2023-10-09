@@ -8,6 +8,10 @@ module.exports = {
   theme: {
     extend: {
 
+      fontFamily: {
+        'custom-font' : 'Inter',
+      },
+
       colors: {
         'primary-color': '#011B43',
         'secondary-color': '#FBE5B9',

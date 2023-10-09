@@ -1,6 +1,7 @@
 import React from "react";
 import Wrapper from "./Wrapper";
-import sitelogo from "../../../public/logo.png"
+import Image from "next/image"
+import sitelogo from "../../../public/images/logo.svg"
 import Link from "next/link";
 import { FaFacebookF,FaTwitter,FaInstagram } from "react-icons/fa";
 import { FaCcPaypal,FaCcMastercard } from "react-icons/fa";
@@ -9,7 +10,7 @@ import {SiAmericanexpress} from "react-icons/si"
 
 const Footer = () => {
   return (
-    <footer className="w-full bg-primary-color text-white bottom-0 py-8">
+    <footer className="w-full  bg-primary-color text-white py-8">
 
       <Wrapper className="w-full  md:flex-col">
 
@@ -21,7 +22,7 @@ const Footer = () => {
        <div className="info w-full px-1  py-4">
         <div className="sitedata w-full flex flex-col items-center  gap-y-4">
 
-          <img src={sitelogo} alt="site logo" width={200}/>
+          <Image src={sitelogo} alt="site logo" width={150}/>
           <p className=" w-full md:w-full text-[1rem]">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime, quasi magni reiciendis esse explicabo perferendis ipsam, voluptates, ad unde veritatis possimus odit officia commodi perspiciatis minus omnis corrupti. Veritatis commodi dolorum porro suscipit eius eaque voluptatibus odit eveniet recusandae cum!
           </p>          
@@ -156,7 +157,7 @@ const Footer = () => {
 
           <div className="icons w-full flex justify-between  md:justify-center align-middle gap-x-6">
 
-          <img src={sitelogo} alt="site logo" />
+          <Image width={80} src={sitelogo} alt="site logo" />
 
           <div className="flex flex-row gap-x-6">
           <FaFacebookF className="cursor-pointer hover:text-secondary-color"/>
