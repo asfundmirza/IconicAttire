@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { BsChevronDown } from "react-icons/bs";
+import { fetchDataFromUrl } from "../utils/api";
 
 const data = [
   { id: 1, name: "Tops", subMenu: true },
@@ -19,13 +20,28 @@ const subMenuDataBottoms = [
 ];
 
 const Menu = ({ showSubMenu, setShowSubMenu }) => {
+  const [apiData, setApiData] = useState(null);
+
   const subMenuHandler = () => {
     setShowSubMenu(null);
     console.log("1");
   };
 
+  useEffect(() => {
+    fetchCategory();
+  }, []);
+
+  const fetchCategory = async () => {
+    const res = await fetchDataFromUrl("/api/category", {
+      cache: "force-cache",
+    });
+    const data = res.json();
+    setApiData(data);
+  };
+
   return (
     <ul className="hidden md:flex items-center gap-8 font-medium text-white">
+      <h1>hello</h1>
       {data.map((item) => (
         <li
           key={item.id}
