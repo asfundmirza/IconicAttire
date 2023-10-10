@@ -19,28 +19,11 @@ const data = [
 //   { id: 2, name: "Pants", doc_count: 8 },
 // ];
 
-const Menu = ({ showSubMenu, setShowSubMenu }) => {
-  const [categoryData, setCategoryData] = useState(null);
-
+const Menu = ({ showSubMenu, setShowSubMenu, categoryData }) => {
   const subMenuHandler = () => {
     setShowSubMenu(null);
-    console.log("1");
   };
 
-  useEffect(() => {
-    fetchCategory();
-  }, []);
-
-  const fetchCategory = async () => {
-    try {
-      const res = await fetchDataFromUrl("/api/categories", {
-        cache: "force-cache",
-      });
-      setCategoryData(res);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
   const filterCategoriesByMenu = (menuName) => {
     return categoryData?.data?.filter((category) => {
       if (
@@ -120,6 +103,9 @@ const Menu = ({ showSubMenu, setShowSubMenu }) => {
                   }`}
                 >
                   <span>{subItem.attributes.name}</span>
+                  <span className="text-white">
+                    {subItem.attributes.products.data.length}
+                  </span>
                 </Link>
               ))}
             </div>

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Wrapper from "./Wrapper";
 
 import Link from "next/link";
@@ -11,12 +11,27 @@ import { IoMdHeartEmpty } from "react-icons/io";
 import { BsCart } from "react-icons/bs";
 import { BiMenuAltRight } from "react-icons/bi";
 import { VscChromeClose } from "react-icons/vsc";
-// import { fetchDataFromApi } from "@/utils/api";
-// import { useSelector } from "react-redux";
+import { fetchDataFromUrl } from "../utils/api";
 
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [showSubMenu, setShowSubMenu] = useState(null);
+  const [categoryData, setCategoryData] = useState(null);
+
+  useEffect(() => {
+    fetchCategory();
+  }, []);
+
+  const fetchCategory = async () => {
+    try {
+      const res = await fetchDataFromUrl("/api/categories?populate=*", {
+        cache: "force-cache",
+      });
+      setCategoryData(res);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   return (
     <header className="w-full h-[50px] md:h-[80px] bg-primary-color  flex items-center shadow-lg justify-between top-0 sticky">
@@ -30,7 +45,11 @@ const Header = () => {
           {/* <img src={Sitelogo} className="w-[40px] md:w-[60px]" /> */}
         </Link>
 
-        <Menu showSubMenu={showSubMenu} setShowSubMenu={setShowSubMenu} />
+        <Menu
+          showSubMenu={showSubMenu}
+          setShowSubMenu={setShowSubMenu}
+          categoryData={categoryData}
+        />
 
         {mobileMenu && <MenuMobile />}
 
