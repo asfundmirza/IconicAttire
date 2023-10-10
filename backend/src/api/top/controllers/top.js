@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * catagory controller
+ * top controller
  */
 
 const { createCoreController } = require('@strapi/strapi').factories;
 
-module.exports = createCoreController('api::catagory.catagory');
+module.exports = createCoreController('api::top.top');
