@@ -10,17 +10,17 @@ const data = [
   { id: 4, name: "Contact", url: "/contact" },
 ];
 
-const subMenuDataTops = [
-  { id: 1, name: "Shirts", doc_count: 11 },
-  { id: 2, name: "Jackets", doc_count: 8 },
-];
-const subMenuDataBottoms = [
-  { id: 1, name: "Shorts", doc_count: 11 },
-  { id: 2, name: "Pants", doc_count: 8 },
-];
+// const subMenuDataTops = [
+//   { id: 1, name: "Shirts", doc_count: 11 },
+//   { id: 2, name: "Jackets", doc_count: 8 },
+// ];
+// const subMenuDataBottoms = [
+//   { id: 1, name: "Shorts", doc_count: 11 },
+//   { id: 2, name: "Pants", doc_count: 8 },
+// ];
 
 const Menu = ({ showSubMenu, setShowSubMenu }) => {
-  const [apiData, setApiData] = useState(null);
+  const [categoryData, setCategoryData] = useState(null);
 
   const subMenuHandler = () => {
     setShowSubMenu(null);
@@ -32,16 +32,36 @@ const Menu = ({ showSubMenu, setShowSubMenu }) => {
   }, []);
 
   const fetchCategory = async () => {
-    const res = await fetchDataFromUrl("/api/category", {
-      cache: "force-cache",
+    try {
+      const res = await fetchDataFromUrl("/api/categories", {
+        cache: "force-cache",
+      });
+      setCategoryData(res);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+  const filterCategoriesByMenu = (menuName) => {
+    return categoryData?.data?.filter((category) => {
+      if (
+        menuName === "Tops" &&
+        (category.attributes.name === "Shirts" ||
+          category.attributes.name === "Jackets")
+      ) {
+        return true;
+      } else if (
+        menuName === "Bottoms" &&
+        (category.attributes.name === "Shorts" ||
+          category.attributes.name === "Pants")
+      ) {
+        return true;
+      }
+      return false;
     });
-    const data = res.json();
-    setApiData(data);
   };
 
   return (
     <ul className="hidden md:flex items-center gap-8 font-medium text-white">
-      <h1>hello</h1>
       {data.map((item) => (
         <li
           key={item.id}
@@ -55,7 +75,7 @@ const Menu = ({ showSubMenu, setShowSubMenu }) => {
                 showSubMenu === item.id ? "block" : "hidden"
               } absolute top-full left-0 bg-primary-color rounded-lg w-48 py-3 shadow-lg px-3`}
             >
-              {item.name === "Tops"
+              {/* {item.name === "Tops"
                 ? subMenuDataTops.map((subItem, index) => (
                     <Link
                       key={subItem.id}
@@ -87,7 +107,21 @@ const Menu = ({ showSubMenu, setShowSubMenu }) => {
                       <span className="text-white">{subItem.doc_count}</span>
                     </Link>
                   ))
-                : null}
+                : null} */}
+              {filterCategoriesByMenu(item.name)?.map((subItem, index) => (
+                <Link
+                  key={subItem.id}
+                  href={`/category/${subItem.attributes.slug}`}
+                  onClick={subMenuHandler}
+                  className={`text-white py-3  flex justify-between items-center ${
+                    index !== filterCategoriesByMenu(item.name).length - 1
+                      ? "border-b border-gray-300"
+                      : ""
+                  }`}
+                >
+                  <span>{subItem.attributes.name}</span>
+                </Link>
+              ))}
             </div>
           ) : null}
           <div className="cursor-pointer flex items-center">

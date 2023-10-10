@@ -2,11 +2,10 @@
 import React, { useState } from "react";
 import Wrapper from "./Wrapper";
 
-
 import Link from "next/link";
 import Menu from "./Menu";
 import Image from "next/image";
-import Sitelogo from "../../../public/images/logo.svg"
+import Sitelogo from "../../../public/images/logo.svg";
 
 import { IoMdHeartEmpty } from "react-icons/io";
 import { BsCart } from "react-icons/bs";
@@ -23,7 +22,11 @@ const Header = () => {
     <header className="w-full h-[50px] md:h-[80px] bg-primary-color  flex items-center shadow-lg justify-between top-0 sticky">
       <Wrapper className="h-[60px] flex justify-between items-center">
         <Link href="/">
-          <Image src={Sitelogo} alt="site logo" className="w-40px md:w-[140px]"/>
+          <Image
+            src={Sitelogo}
+            alt="site logo"
+            className="w-40px md:w-[140px]"
+          />
           {/* <img src={Sitelogo} className="w-[40px] md:w-[60px]" /> */}
         </Link>
 
