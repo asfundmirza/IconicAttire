@@ -104,7 +104,7 @@ const Menu = ({ showSubMenu, setShowSubMenu, categoryData }) => {
                 >
                   <span>{subItem.attributes.name}</span>
                   <span className="text-white">
-                    {subItem.attributes.products.data.length}
+                    {`(${subItem.attributes.products.data.length})`}
                   </span>
                 </Link>
               ))}
