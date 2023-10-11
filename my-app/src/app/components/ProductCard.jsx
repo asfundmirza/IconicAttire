@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-const ProductCard = ({ data }) => {
+const ProductCard = ({ data: { attributes: p, id } }) => {
   return (
     // <section className="text-gray-600 body-font">
     //   <div className="container px-5 py-24 mx-auto">
@@ -13,12 +13,13 @@ const ProductCard = ({ data }) => {
     //         >
     <>
       <Image
+        alt={p.name}
         width={600}
         height={600}
-        alt={data.attributes.name}
-        // className="object-cover object-center w-full h-full block"
-        src={data?.attributes?.thumbnail?.data?.attributes?.url}
+        className="object-cover object-center w-full h-full block"
+        src={p.thumbnail.data.attributes.url}
       />
+      {/* <h1>{data.attributes.slug}</h1> */}
     </>
 
     //           <div className="mt-4">
