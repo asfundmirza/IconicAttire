@@ -24,10 +24,9 @@ const Category = ({ params }) => {
   return (
     <div>
       <Wrapper>
-        <div className="text-center max-w-[800px] mx-auto mt-8 md:mt-0">
+        <div className="text-center max-w-[800px] mx-auto mt-8 md:mt-5">
           <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
             {apiCatData?.data?.[0]?.attributes?.name}
-            {/* {params.slug} */}
           </div>
         </div>
         {/* products grid start */}
