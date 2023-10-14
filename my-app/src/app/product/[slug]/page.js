@@ -5,6 +5,8 @@ import Wrapper from "@/app/components/Wrapper";
 import ProductDetailsCarousel from "@/app/components/ProductDetailsCarousel";
 import RelatedProducts from "@/app/components/RelatedProducts";
 import { fetchDataFromUrl } from "@/app/utils/api";
+import { Discount } from "@/app/utils/discount";
+
 import ReactMarkdown from "react-markdown";
 
 import { ToastContainer, toast } from "react-toastify";
@@ -14,6 +16,7 @@ const ProductDetails = ({ params }) => {
   const [selectedSize, setSelectedSize] = useState();
   const [showError, setShowError] = useState(false);
   const [apiProductData, setApiProductData] = useState(null);
+  const [apiProductsData, setApiProductsData] = useState(null);
 
   useEffect(() => {
     fetchData();
@@ -28,22 +31,25 @@ const ProductDetails = ({ params }) => {
     );
 
     setApiProductData(product);
+    setApiProductsData(products);
   };
 
   const p = apiProductData?.data?.[0]?.attributes;
 
-  //   const notify = () => {
-  //     toast.success("Success. Check your cart!", {
-  //       position: "bottom-right",
-  //       autoClose: 5000,
-  //       hideProgressBar: false,
-  //       closeOnClick: true,
-  //       pauseOnHover: true,
-  //       draggable: true,
-  //       progress: undefined,
-  //       theme: "dark",
-  //     });
-  //   };
+  const discountedPrice = Discount(p?.original_price, p?.price);
+
+  const notify = () => {
+    toast.success("Success. Check your cart!", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  };
 
   return (
     <div className="w-full md:py-20">
@@ -75,8 +81,7 @@ const ProductDetails = ({ params }) => {
                     {p?.original_price}
                   </p>
                   <p className="ml-auto text-base font-medium text-green-500">
-                    {/* {getDiscountedPricePercentage(p.original_price, p.price)}% */}
-                    off
+                    {discountedPrice}% off
                   </p>
                 </>
               )}
@@ -106,10 +111,14 @@ const ProductDetails = ({ params }) => {
                   <div
                     key={i}
                     className={`border rounded-md text-center py-3 font-medium ${
-                      item.enabled
+                      item.quantity > 0
                         ? "hover:border-black cursor-pointer"
                         : "cursor-not-allowed bg-black/[0.1] opacity-50"
-                    } ${selectedSize === item.size ? "border-black" : ""}`}
+                    } ${
+                      selectedSize === item.size
+                        ? "border-black bg-black text-white"
+                        : ""
+                    }`}
                     onClick={() => {
                       setSelectedSize(item.size);
                       setShowError(false);
@@ -142,13 +151,13 @@ const ProductDetails = ({ params }) => {
                     behavior: "smooth",
                   });
                 } else {
-                  dispatch(
-                    addToCart({
-                      ...product?.data?.[0],
-                      selectedSize,
-                      oneQuantityPrice: p.price,
-                    })
-                  );
+                  // dispatch(
+                  //   addToCart({
+                  //     ...product?.data?.[0],
+                  //     selectedSize,
+                  //     oneQuantityPrice: p.price,
+                  //   })
+                  // );
                   notify();
                 }
               }}
@@ -173,8 +182,7 @@ const ProductDetails = ({ params }) => {
           </div>
           {/* right column end */}
         </div>
-
-        {/* <RelatedProducts products={products} /> */}
+        {apiProductsData && <RelatedProducts products={apiProductsData} />}
       </Wrapper>
     </div>
   );
