@@ -34,7 +34,7 @@ const Header = () => {
   };
 
   return (
-    <header className="w-full h-[50px] md:h-[80px] bg-primary-color  flex items-center shadow-lg justify-between top-0 sticky">
+    <header className="w-full h-[50px] md:h-[80px] bg-primary-color  flex items-center shadow-lg justify-between top-0 z-50 sticky">
       <Wrapper className="h-[60px] flex justify-between items-center">
         <Link href="/">
           <Image
