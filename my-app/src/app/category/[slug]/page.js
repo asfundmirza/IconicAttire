@@ -12,7 +12,7 @@ const Category = ({ params }) => {
   const [searchFilterData, setSearchFilterData] = useState(null);
   const [priceFilterData, setPriceFilterData] = useState(null);
 
-  const [value, setValue] = useState([1500, 3500]);
+  const [value, setValue] = useState([1000, 5000]);
 
   const fetchData = async () => {
     const category = await fetchDataFromUrl(
@@ -25,8 +25,9 @@ const Category = ({ params }) => {
       `/api/products?populate=*&[filters][categories][slug][$eq]=${params.slug}&[filters][slug][$contains]=${inputValue}`
     );
     const priceFilteredData = await fetchDataFromUrl(
-      `/api/products?populate=*&[filters][categories][slug][$eq]=${params.slug}&[filters][price][$in]=${value[0]}`
+      `/api/products?populate=*&[filters][categories][slug][$eq]=${params.slug}&[filters][price][$gte]=${value[0]}&[filters][price][$lte]=${value[1]}`
     );
+
     setApiCatData(category);
     setApiProdData(products);
     setSearchFilterData(searchFilteredData);
@@ -124,6 +125,10 @@ const Category = ({ params }) => {
 
             {priceFilterData
               ? priceFilterData?.data?.map((product) => (
+                  <ProductCard key={product.id} data={product} />
+                ))
+              : !priceFilterData && searchFilterData
+              ? searchFilterData.data.map((product) => (
                   <ProductCard key={product.id} data={product} />
                 ))
               : apiProdData?.data.map((product) => (
