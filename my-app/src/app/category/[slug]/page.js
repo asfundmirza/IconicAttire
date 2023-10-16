@@ -4,6 +4,9 @@ import Wrapper from "@/app/components/Wrapper";
 import { fetchDataFromUrl } from "@/app/utils/api";
 import ProductCard from "@/app/components/ProductCard";
 import Slider from "@mui/material/Slider";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
 
 const Category = ({ params }) => {
   const [apiCatData, setApiCatData] = useState(null);
@@ -11,6 +14,7 @@ const Category = ({ params }) => {
   const [inputValue, setinputValue] = useState("");
 
   const [value, setValue] = useState([1000, 5000]);
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const fetchData = async () => {
     const category = await fetchDataFromUrl(
@@ -33,6 +37,13 @@ const Category = ({ params }) => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
   };
 
   return (
@@ -62,7 +73,7 @@ const Category = ({ params }) => {
                 type="text"
                 value={inputValue}
                 onChange={(e) => setinputValue(e.target.value)}
-                className="bg-slate-100 border-primary-color p-2 rounded-md w-80 "
+                className="bg-slate-100 border-primary-color p-2 rounded-md w-60 "
               />
             </div>
             {/* filter by price */}
@@ -77,7 +88,7 @@ const Category = ({ params }) => {
                   color: "lightgray",
                 }}
               ></div>
-              <div style={{ width: 300 }}>
+              <div style={{ width: 230 }}>
                 <Slider
                   getAriaLabel={() => "Price range"}
                   value={value}
@@ -95,6 +106,19 @@ const Category = ({ params }) => {
               <p className="flex justify-end">
                 Price : {value[0]}-{value[1]}
               </p>
+            </div>
+            {/* sorting */}
+            <div className="flex flex-col gap-3 ">
+              <p className="text-xl font-custom-font text-gray-600 font-semibold">
+                Sort By
+              </p>
+              <div
+                style={{
+                  borderTop: "4px solid",
+                  width: "50px",
+                  color: "lightgray",
+                }}
+              ></div>
             </div>
           </div>
 
@@ -124,3 +148,6 @@ export default Category;
 //       <ProductCard key={product.id} data={product} />
 //     ))
 //   : ""}
+
+// api for the filtering and sorting
+///api/products?populate=*&sort=publishedAt:asc&[filters][categories][slug][$eq]=shirts&[filters][slug][$contains]=n&[filters][price][$gte]=1500&[filters][price][$lte]=5000
