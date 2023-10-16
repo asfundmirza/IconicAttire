@@ -4,9 +4,11 @@ import Wrapper from "@/app/components/Wrapper";
 import { fetchDataFromUrl } from "@/app/utils/api";
 import ProductCard from "@/app/components/ProductCard";
 import Slider from "@mui/material/Slider";
-import Button from "@mui/material/Button";
-import Menu from "@mui/material/Menu";
+import Box from "@mui/material/Box";
+import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
 
 const Category = ({ params }) => {
   const [apiCatData, setApiCatData] = useState(null);
@@ -14,14 +16,13 @@ const Category = ({ params }) => {
   const [inputValue, setinputValue] = useState("");
 
   const [value, setValue] = useState([1000, 5000]);
-  const [anchorEl, setAnchorEl] = useState(null);
-
+  const [age, setAge] = useState("desc");
   const fetchData = async () => {
     const category = await fetchDataFromUrl(
       `/api/categories?filters[slug][$eq]=${params.slug}`
     );
     const products = await fetchDataFromUrl(
-      `/api/products?populate=*&[filters][categories][slug][$eq]=${params.slug}&[filters][slug][$contains]=${inputValue}&[filters][price][$gte]=${value[0]}&[filters][price][$lte]=${value[1]}`
+      `/api/products?populate=*&sort=publishedAt:${age}&[filters][categories][slug][$eq]=${params.slug}&[filters][slug][$contains]=${inputValue}&[filters][price][$gte]=${value[0]}&[filters][price][$lte]=${value[1]}`
     );
 
     setApiCatData(category);
@@ -29,7 +30,7 @@ const Category = ({ params }) => {
   };
   useEffect(() => {
     fetchData();
-  }, [inputValue, value]);
+  }, [inputValue, value, age]);
 
   const valuetext = (value) => {
     return value;
@@ -38,12 +39,8 @@ const Category = ({ params }) => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  const open = Boolean(anchorEl);
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
+  const handleSortChange = (event) => {
+    setAge(event.target.value);
   };
 
   return (
@@ -113,12 +110,28 @@ const Category = ({ params }) => {
                 Sort By
               </p>
               <div
+                className="mb-2"
                 style={{
                   borderTop: "4px solid",
                   width: "50px",
                   color: "lightgray",
                 }}
               ></div>
+              <Box sx={{ minWidth: 120 }}>
+                <FormControl fullWidth>
+                  <InputLabel id="demo-simple-select-label">Sort</InputLabel>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={age}
+                    label="Sort"
+                    onChange={handleSortChange}
+                  >
+                    <MenuItem value="asc">oldest</MenuItem>
+                    <MenuItem value="desc">latest</MenuItem>
+                  </Select>
+                </FormControl>
+              </Box>
             </div>
           </div>
 
@@ -150,4 +163,4 @@ export default Category;
 //   : ""}
 
 // api for the filtering and sorting
-///api/products?populate=*&sort=publishedAt:asc&[filters][categories][slug][$eq]=shirts&[filters][slug][$contains]=n&[filters][price][$gte]=1500&[filters][price][$lte]=5000
+//api/products?populate=*&sort=publishedAt:asc&[filters][categories][slug][$eq]=shirts&[filters][slug][$contains]=n&[filters][price][$gte]=1500&[filters][price][$lte]=5000
