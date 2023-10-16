@@ -9,8 +9,6 @@ const Category = ({ params }) => {
   const [apiCatData, setApiCatData] = useState(null);
   const [apiProdData, setApiProdData] = useState(null);
   const [inputValue, setinputValue] = useState("");
-  const [searchFilterData, setSearchFilterData] = useState(null);
-  const [priceFilterData, setPriceFilterData] = useState(null);
 
   const [value, setValue] = useState([1000, 5000]);
 
@@ -19,19 +17,11 @@ const Category = ({ params }) => {
       `/api/categories?filters[slug][$eq]=${params.slug}`
     );
     const products = await fetchDataFromUrl(
-      `/api/products?populate=*&[filters][categories][slug][$eq]=${params.slug}`
-    );
-    const searchFilteredData = await fetchDataFromUrl(
-      `/api/products?populate=*&[filters][categories][slug][$eq]=${params.slug}&[filters][slug][$contains]=${inputValue}`
-    );
-    const priceFilteredData = await fetchDataFromUrl(
-      `/api/products?populate=*&[filters][categories][slug][$eq]=${params.slug}&[filters][price][$gte]=${value[0]}&[filters][price][$lte]=${value[1]}`
+      `/api/products?populate=*&[filters][categories][slug][$eq]=${params.slug}&[filters][slug][$contains]=${inputValue}&[filters][price][$gte]=${value[0]}&[filters][price][$lte]=${value[1]}`
     );
 
     setApiCatData(category);
     setApiProdData(products);
-    setSearchFilterData(searchFilteredData);
-    setPriceFilterData(priceFilteredData);
   };
   useEffect(() => {
     fetchData();
@@ -109,31 +99,9 @@ const Category = ({ params }) => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0 ">
-            {/* {searchFilterData
-              ? searchFilterData.data?.map((product) => (
-                  <ProductCard key={product.id} data={product} />
-                ))
-              : !searchFilterData */}
-            {/* priceFilterData?
-               priceFilterData?.data?.map((product) => (
-                  <ProductCard key={product.id} data={product} />
-                ))
-              {/* : !searchFilterData && !priceFilterData */}
-            {/* : apiProdData?.data.map((product) => (
-                  <ProductCard key={product.id} data={product} />
-                )) */}
-
-            {priceFilterData
-              ? priceFilterData?.data?.map((product) => (
-                  <ProductCard key={product.id} data={product} />
-                ))
-              : !priceFilterData && searchFilterData
-              ? searchFilterData.data.map((product) => (
-                  <ProductCard key={product.id} data={product} />
-                ))
-              : apiProdData?.data.map((product) => (
-                  <ProductCard key={product.id} data={product} />
-                ))}
+            {apiProdData?.data?.map((product) => (
+              <ProductCard key={product.id} data={product} />
+            ))}
           </div>
         </div>
       </Wrapper>
