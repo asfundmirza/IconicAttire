@@ -9,6 +9,7 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
+import Skeleton from "@mui/material/Skeleton";
 
 const Category = ({ params }) => {
   const [apiCatData, setApiCatData] = useState(null);
@@ -48,12 +49,22 @@ const Category = ({ params }) => {
       <Wrapper>
         <div className="text-center max-w-[700px] mx-auto mt-8 md:mt-5">
           <div className="text-[28px] md:text-[34px] mb-5 font-semibold leading-tight">
-            {apiCatData?.data?.[0]?.attributes?.name}
+            {apiCatData ? (
+              apiCatData.data?.[0]?.attributes?.name
+            ) : (
+              <div className="flex justify-center items-center">
+                <Skeleton
+                  width={100}
+                  height={50}
+                  sx={{ bgcolor: "gray.100" }}
+                />
+              </div>
+            )}
           </div>
         </div>
         {/* products grid start */}
-        <div className="flex justify-center ">
-          <div className="hidden md:flex flex-col gap-8 my-14 mr-8">
+        <div className="flex">
+          <div className="hidden md:flex justify-start flex-col gap-8 my-14 mr-8">
             {/* input search field */}
             <div className="flex flex-col gap-3 ">
               <p className="text-xl font-custom-font text-gray-600 font-semibold">
@@ -135,10 +146,33 @@ const Category = ({ params }) => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0 ">
-            {apiProdData?.data?.map((product) => (
-              <ProductCard key={product.id} data={product} />
-            ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 my-14 px-5 md:px-0  ">
+            {apiProdData
+              ? apiProdData.data.length > 0
+                ? apiProdData.data.map((product) => (
+                    <ProductCard key={product.id} data={product} />
+                  ))
+                : null
+              : Array.from({ length: 4 }).map((_, index) => (
+                  <Skeleton
+                    key={index}
+                    variant="rectangular"
+                    width={375}
+                    height={420}
+                    sx={{ bgcolor: "gray.100" }}
+                  />
+                ))}
+          </div>
+          <div
+            className={`flex w-full justify-center items-center ${
+              apiProdData?.data?.length === 0 ? "" : "hidden"
+            }`}
+          >
+            {apiProdData && apiProdData.data.length === 0 && (
+              <p className="text-center font-semibold text-3xl">
+                No data found!
+              </p>
+            )}
           </div>
         </div>
       </Wrapper>
