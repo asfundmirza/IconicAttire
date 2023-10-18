@@ -72,9 +72,6 @@ const ProductDetails = ({ params }) => {
                 {p?.name}
               </div>
 
-              {/* PRODUCT SUBTITLE */}
-              <div className="text-lg font-semibold mb-5">{p?.subtitle}</div>
-
               {/* PRODUCT PRICE */}
               <div className="flex items-center">
                 <p className="mr-2 text-lg font-semibold">Rs : {p?.price}</p>
@@ -102,8 +99,14 @@ const ProductDetails = ({ params }) => {
                 {/* HEADING START */}
                 <div className="flex justify-between mb-2">
                   <div className="text-md font-semibold">Select Size</div>
-                  <div className="text-md font-medium text-black/[0.5] cursor-pointer">
-                    Select Guide
+                  <div
+                    className="text-sm font-medium text-black/[0.5] hover:cursor-pointer"
+                    onClick={() => {
+                      setSelectedSize(null);
+                      setShowError(false);
+                    }}
+                  >
+                    Clear
                   </div>
                 </div>
                 {/* HEADING END */}
@@ -143,9 +146,26 @@ const ProductDetails = ({ params }) => {
               </div>
               {/* PRODUCT SIZE RANGE END */}
 
+              {/* quantiy */}
+
+              <div className="flex mb-4 items-center">
+                <p className="text-md font-semibold">Quantity : </p>
+                <div className="flex ml-2">
+                  <div className="w-8 h-8 bg-primary-color text-white rounded-md flex items-center justify-center">
+                    -
+                  </div>
+                  <div className="w-8 h-8 flex items-center justify-center mx-2">
+                    1
+                  </div>
+                  <div className="w-8 h-8 bg-primary-color text-white flex rounded-md items-center justify-center">
+                    +
+                  </div>
+                </div>
+              </div>
+
               {/* ADD TO CART BUTTON START */}
               <button
-                className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
+                className="w-full py-4 rounded-full bg-primary-color text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
                 onClick={() => {
                   if (!selectedSize) {
                     setShowError(true);
