@@ -22,10 +22,6 @@ const ProductDetailsCarousel = ({ images }) => {
             height={200}
           />
         ))}
-        {/* <Image src={shirt1} width={400} height={400} />
-        <Image src={shirt1} />
-        <Image src={shirt1} />
-        <Image src={shirt1} /> */}
       </Carousel>
     </div>
   );

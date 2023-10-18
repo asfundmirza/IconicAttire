@@ -6,11 +6,13 @@ import ProductDetailsCarousel from "@/app/components/ProductDetailsCarousel";
 import RelatedProducts from "@/app/components/RelatedProducts";
 import { fetchDataFromUrl } from "@/app/utils/api";
 import { Discount } from "@/app/utils/discount";
+import CircularProgress from "@mui/material/CircularProgress";
 
 import ReactMarkdown from "react-markdown";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Skeleton } from "@mui/material";
 
 const ProductDetails = ({ params }) => {
   const [selectedSize, setSelectedSize] = useState();
@@ -55,133 +57,160 @@ const ProductDetails = ({ params }) => {
     <div className="w-full md:py-20">
       <ToastContainer />
       <Wrapper>
-        <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
-          {/* left column start */}
-          <div className="w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-full mx-auto lg:mx-0">
-            <ProductDetailsCarousel images={p?.images?.data} />
-          </div>
-          {/* left column end */}
-
-          {/* right column start */}
-          <div className="flex-[1] py-3">
-            {/* PRODUCT TITLE */}
-            <div className="text-[34px] font-semibold mb-2 leading-tight">
-              {p?.name}
+        {p ? (
+          <div className="flex flex-col lg:flex-row md:px-10 gap-[50px] lg:gap-[100px]">
+            {/* left column start */}
+            <div className="w-full md:w-auto flex-[1.5] max-w-[500px] lg:max-w-full mx-auto lg:mx-0">
+              <ProductDetailsCarousel images={p?.images?.data} />
             </div>
+            {/* left column end */}
 
-            {/* PRODUCT SUBTITLE */}
-            <div className="text-lg font-semibold mb-5">{p?.subtitle}</div>
-
-            {/* PRODUCT PRICE */}
-            <div className="flex items-center">
-              <p className="mr-2 text-lg font-semibold">Rs : {p?.price}</p>
-              {p?.original_price && (
-                <>
-                  <p className="text-base  font-medium line-through">
-                    {p?.original_price}
-                  </p>
-                  <p className="ml-auto text-base font-medium text-green-500">
-                    {discountedPrice}% off
-                  </p>
-                </>
-              )}
-            </div>
-
-            <div className="text-md font-medium text-black/[0.5]">
-              incl. of taxes
-            </div>
-            <div className="text-md font-medium text-black/[0.5] mb-20">
-              {`(Also includes all applicable duties)`}
-            </div>
-
-            {/* PRODUCT SIZE RANGE START */}
-            <div className="mb-10">
-              {/* HEADING START */}
-              <div className="flex justify-between mb-2">
-                <div className="text-md font-semibold">Select Size</div>
-                <div className="text-md font-medium text-black/[0.5] cursor-pointer">
-                  Select Guide
-                </div>
+            {/* right column start */}
+            <div className="flex-[1] py-3">
+              {/* PRODUCT TITLE */}
+              <div className="text-[34px] font-semibold mb-2 leading-tight">
+                {p?.name}
               </div>
-              {/* HEADING END */}
 
-              {/* SIZE START */}
-              <div id="sizesGrid" className="grid grid-cols-3 gap-2">
-                {p?.size?.data.map((item, i) => (
+              {/* PRODUCT PRICE */}
+              <div className="flex items-center">
+                <p className="mr-2 text-lg font-semibold">Rs : {p?.price}</p>
+                {p?.original_price && (
+                  <>
+                    <p className="text-base  font-medium line-through">
+                      {p?.original_price}
+                    </p>
+                    <p className="ml-auto text-base font-medium text-green-500">
+                      {discountedPrice}% off
+                    </p>
+                  </>
+                )}
+              </div>
+
+              <div className="text-md font-medium text-black/[0.5]">
+                incl. of taxes
+              </div>
+              <div className="text-md font-medium text-black/[0.5] mb-20">
+                {`(Also includes all applicable duties)`}
+              </div>
+
+              {/* PRODUCT SIZE RANGE START */}
+              <div className="mb-10">
+                {/* HEADING START */}
+                <div className="flex justify-between mb-2">
+                  <div className="text-md font-semibold">Select Size</div>
                   <div
-                    key={i}
-                    className={`border rounded-md text-center py-3 font-medium ${
-                      item.quantity > 0
-                        ? "hover:border-black cursor-pointer"
-                        : "cursor-not-allowed bg-black/[0.1] opacity-50"
-                    } ${
-                      selectedSize === item.size
-                        ? "border-black bg-black text-white"
-                        : ""
-                    }`}
+                    className="text-sm font-medium text-black/[0.5] hover:cursor-pointer"
                     onClick={() => {
-                      setSelectedSize(item.size);
+                      setSelectedSize(null);
                       setShowError(false);
                     }}
                   >
-                    {item.size}
+                    Clear
                   </div>
-                ))}
-              </div>
-              {/* SIZE END */}
-
-              {/* SHOW ERROR START */}
-              {showError && (
-                <div className="text-red-600 mt-1">
-                  Size selection is required
                 </div>
-              )}
-              {/* SHOW ERROR END */}
-            </div>
-            {/* PRODUCT SIZE RANGE END */}
+                {/* HEADING END */}
 
-            {/* ADD TO CART BUTTON START */}
-            <button
-              className="w-full py-4 rounded-full bg-black text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
-              onClick={() => {
-                if (!selectedSize) {
-                  setShowError(true);
-                  document.getElementById("sizesGrid").scrollIntoView({
-                    block: "center",
-                    behavior: "smooth",
-                  });
-                } else {
-                  // dispatch(
-                  //   addToCart({
-                  //     ...product?.data?.[0],
-                  //     selectedSize,
-                  //     oneQuantityPrice: p.price,
-                  //   })
-                  // );
-                  notify();
-                }
-              }}
-            >
-              Add to Cart
-            </button>
-            {/* ADD TO CART BUTTON END */}
+                {/* SIZE START */}
+                <div id="sizesGrid" className="grid grid-cols-3 gap-2">
+                  {p?.size?.data.map((item, i) => (
+                    <div
+                      key={i}
+                      className={`border rounded-md text-center py-3 font-medium ${
+                        item.quantity > 0
+                          ? "hover:border-black cursor-pointer"
+                          : "cursor-not-allowed bg-black/[0.1] opacity-50"
+                      } ${
+                        selectedSize === item.size
+                          ? "border-black bg-black text-white"
+                          : ""
+                      }`}
+                      onClick={() => {
+                        setSelectedSize(item.size);
+                        setShowError(false);
+                      }}
+                    >
+                      {item.size}
+                    </div>
+                  ))}
+                </div>
+                {/* SIZE END */}
 
-            {/* WHISHLIST BUTTON START */}
-            <button className="w-full py-4 rounded-full border border-black text-lg font-medium transition-transform active:scale-95 flex items-center justify-center gap-2 hover:opacity-75 mb-10">
-              Whishlist
-              <IoMdHeartEmpty size={20} />
-            </button>
-            {/* WHISHLIST BUTTON END */}
+                {/* SHOW ERROR START */}
+                {showError && (
+                  <div className="text-red-600 mt-1">
+                    Size selection is required
+                  </div>
+                )}
+                {/* SHOW ERROR END */}
+              </div>
+              {/* PRODUCT SIZE RANGE END */}
 
-            <div>
-              <div className="text-lg font-bold mb-5">Product Details</div>
-              <div className="markdown text-md mb-5">
-                <ReactMarkdown>{p?.description}</ReactMarkdown>
+              {/* quantiy */}
+
+              <div className="flex mb-4 items-center">
+                <p className="text-md font-semibold">Quantity : </p>
+                <div className="flex ml-2">
+                  <div className="w-8 h-8 bg-primary-color text-white rounded-md flex items-center justify-center">
+                    -
+                  </div>
+                  <div className="w-8 h-8 flex items-center justify-center mx-2">
+                    1
+                  </div>
+                  <div className="w-8 h-8 bg-primary-color text-white flex rounded-md items-center justify-center">
+                    +
+                  </div>
+                </div>
+              </div>
+
+              {/* ADD TO CART BUTTON START */}
+              <button
+                className="w-full py-4 rounded-full bg-primary-color text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
+                onClick={() => {
+                  if (!selectedSize) {
+                    setShowError(true);
+                    document.getElementById("sizesGrid").scrollIntoView({
+                      block: "center",
+                      behavior: "smooth",
+                    });
+                  } else {
+                    // dispatch(
+                    //   addToCart({
+                    //     ...product?.data?.[0],
+                    //     selectedSize,
+                    //     oneQuantityPrice: p.price,
+                    //   })
+                    // );
+                    notify();
+                  }
+                }}
+              >
+                Add to Cart
+              </button>
+              {/* ADD TO CART BUTTON END */}
+
+              {/* WHISHLIST BUTTON START */}
+              <button className="w-full py-4 rounded-full border border-black text-lg font-medium transition-transform active:scale-95 flex items-center justify-center gap-2 hover:opacity-75 mb-10">
+                Whishlist
+                <IoMdHeartEmpty size={20} />
+              </button>
+              {/* WHISHLIST BUTTON END */}
+
+              <div>
+                <div className="text-lg font-bold mb-5">Product Details</div>
+                <div className="markdown text-md mb-5">
+                  <ReactMarkdown>{p?.description}</ReactMarkdown>
+                </div>
               </div>
             </div>
+            {/* right column end */}
           </div>
-          {/* right column end */}
-        </div>
+        ) : (
+          <div className="flex w-full h-screen justify-center items-center">
+            <CircularProgress />
+          </div>
+        )}
+
         {apiProductsData && <RelatedProducts products={apiProductsData} />}
       </Wrapper>
     </div>
