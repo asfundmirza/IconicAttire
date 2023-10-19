@@ -72,14 +72,19 @@ export function CartProvider({ children }) {
     );
   }
 
-  //   function getTotalCost() {
-  //     let totalCost = 0;
-  //     cartItems.map((cartProduct) => {
-  //       const productData = getProductsData(cartProduct.id);
-  //       totalCost += productData.price * cartProduct.quantity;
-  //     });
-  //     return totalCost;
-  //   }
+  function getTotalCost(cartItems, productsData) {
+    let totalCost = 0;
+    cartItems.forEach((cartProduct) => {
+      const productData = productsData?.data?.find(
+        (product) => product.id === cartProduct.product.id
+      );
+
+      if (productData) {
+        totalCost += productData.attributes.price * cartProduct.quantity;
+      }
+    });
+    return totalCost;
+  }
 
   const contextValue = {
     items: cartItems,
@@ -87,7 +92,7 @@ export function CartProvider({ children }) {
     addOneToCart,
     removeOneFromCart,
     deleteFromCart,
-    // getTotalCost,
+    getTotalCost,
   };
 
   return (
