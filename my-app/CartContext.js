@@ -42,7 +42,7 @@ export function CartProvider({ children }) {
       setCartItems(
         cartItems.map((product) =>
           product.id === id && product.size === productSize
-            ? { ...product, quantity: product.quantity + productQuantity }
+            ? { ...product, quantity: product.quantity + 1 }
             : product
         )
       );
@@ -67,19 +67,24 @@ export function CartProvider({ children }) {
   function deleteFromCart(id, productSize) {
     setCartItems((cartItems) =>
       cartItems.filter((product) => {
-        return product.id != id && product.size !== productSize;
+        return product.id != id || product.size != productSize;
       })
     );
   }
 
-  //   function getTotalCost() {
-  //     let totalCost = 0;
-  //     cartItems.map((cartProduct) => {
-  //       const productData = getProductsData(cartProduct.id);
-  //       totalCost += productData.price * cartProduct.quantity;
-  //     });
-  //     return totalCost;
-  //   }
+  function getTotalCost(cartItems, productsData) {
+    let totalCost = 0;
+    cartItems.forEach((cartProduct) => {
+      const productData = productsData?.data?.find(
+        (product) => product.id === cartProduct.product.id
+      );
+
+      if (productData) {
+        totalCost += productData.attributes.price * cartProduct.quantity;
+      }
+    });
+    return totalCost;
+  }
 
   const contextValue = {
     items: cartItems,
@@ -87,7 +92,7 @@ export function CartProvider({ children }) {
     addOneToCart,
     removeOneFromCart,
     deleteFromCart,
-    // getTotalCost,
+    getTotalCost,
   };
 
   return (
