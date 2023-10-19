@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { IoMdHeartEmpty } from "react-icons/io";
 import Wrapper from "@/app/components/Wrapper";
 import ProductDetailsCarousel from "@/app/components/ProductDetailsCarousel";
@@ -7,18 +7,21 @@ import RelatedProducts from "@/app/components/RelatedProducts";
 import { fetchDataFromUrl } from "@/app/utils/api";
 import { Discount } from "@/app/utils/discount";
 import CircularProgress from "@mui/material/CircularProgress";
+import { CartContext } from "../../../../CartContext";
 
 import ReactMarkdown from "react-markdown";
 
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { Skeleton } from "@mui/material";
 
 const ProductDetails = ({ params }) => {
   const [selectedSize, setSelectedSize] = useState();
   const [showError, setShowError] = useState(false);
   const [apiProductData, setApiProductData] = useState(null);
   const [apiProductsData, setApiProductsData] = useState(null);
+  const [productQuantity, setProductQuantity] = useState(1);
+
+  const cart = useContext(CartContext);
 
   useEffect(() => {
     fetchData();
@@ -37,7 +40,7 @@ const ProductDetails = ({ params }) => {
   };
 
   const p = apiProductData?.data?.[0]?.attributes;
-
+  const productId = apiProductData?.data?.[0]?.id;
   const discountedPrice = Discount(p?.original_price, p?.price);
 
   const notify = () => {
@@ -151,15 +154,25 @@ const ProductDetails = ({ params }) => {
               <div className="flex mb-4 items-center">
                 <p className="text-md font-semibold">Quantity : </p>
                 <div className="flex ml-2">
-                  <div className="w-8 h-8 bg-primary-color text-white rounded-md flex items-center justify-center">
+                  <button
+                    onClick={() =>
+                      setProductQuantity(
+                        productQuantity - 1 >= 1 ? productQuantity - 1 : 1
+                      )
+                    }
+                    className="w-8 h-8 bg-primary-color text-white rounded-md flex items-center justify-center"
+                  >
                     -
-                  </div>
+                  </button>
                   <div className="w-8 h-8 flex items-center justify-center mx-2">
-                    1
+                    {productQuantity}
                   </div>
-                  <div className="w-8 h-8 bg-primary-color text-white flex rounded-md items-center justify-center">
+                  <button
+                    onClick={() => setProductQuantity(productQuantity + 1)}
+                    className="w-8 h-8 bg-primary-color text-white flex rounded-md items-center justify-center"
+                  >
                     +
-                  </div>
+                  </button>
                 </div>
               </div>
 
@@ -174,6 +187,8 @@ const ProductDetails = ({ params }) => {
                       behavior: "smooth",
                     });
                   } else {
+                    cart.addOneToCart(productId, selectedSize, productQuantity);
+
                     // dispatch(
                     //   addToCart({
                     //     ...product?.data?.[0],
