@@ -48,7 +48,6 @@ const Header = () => {
   });
 
   const flattenedProductQuantity = productQuantity?.flat();
-
   const totalCartItems = flattenedProductQuantity?.reduce(
     (total, quantity) => total + quantity,
     0
