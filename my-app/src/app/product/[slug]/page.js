@@ -121,11 +121,11 @@ const ProductDetails = ({ params }) => {
                       key={i}
                       className={`border rounded-md text-center py-3 font-medium ${
                         item.quantity > 0
-                          ? "hover:border-black cursor-pointer"
+                          ? "hover:border-primary-color cursor-pointer"
                           : "cursor-not-allowed bg-black/[0.1] opacity-50"
                       } ${
                         selectedSize === item.size
-                          ? "border-black bg-black text-white"
+                          ? "border-primary-color bg-primary-color text-white"
                           : ""
                       }`}
                       onClick={() => {

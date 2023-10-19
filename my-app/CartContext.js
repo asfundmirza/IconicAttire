@@ -42,7 +42,7 @@ export function CartProvider({ children }) {
       setCartItems(
         cartItems.map((product) =>
           product.id === id && product.size === productSize
-            ? { ...product, quantity: product.quantity + productQuantity }
+            ? { ...product, quantity: product.quantity + 1 }
             : product
         )
       );
@@ -67,7 +67,7 @@ export function CartProvider({ children }) {
   function deleteFromCart(id, productSize) {
     setCartItems((cartItems) =>
       cartItems.filter((product) => {
-        return product.id != id && product.size !== productSize;
+        return product.id != id || product.size != productSize;
       })
     );
   }
