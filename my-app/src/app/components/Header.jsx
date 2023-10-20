@@ -114,12 +114,22 @@ const Header = () => {
             </Link>
             {isCartHovered && (
               <div className="absolute top-full right-0 bg-primary-color rounded-lg w-[300px] p-5 py-9 shadow-lg  ">
-                {totalCartItems === 0
-                  ? "No products available"
-                  : productsInCart?.map((item) => {
-                      return <CartMenu key={item?.product?.id} data={item} />;
-                    })
-                    <button>Hello</button>}
+                {totalCartItems === 0 ? (
+                  "No products available"
+                ) : (
+                  <>
+                    {productsInCart?.map((item) => (
+                      <CartMenu key={item?.product?.id} data={item} />
+                    ))}
+                    <div className="flex w-full justify-center mt-5">
+                      <Link href="/cart">
+                        <button className="flex py-2 px-4 text-center font-bold bg-secondary-color rounded-xl">
+                          View Cart
+                        </button>
+                      </Link>
+                    </div>
+                  </>
+                )}
               </div>
             )}
 
