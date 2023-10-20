@@ -13,12 +13,15 @@ import { BiMenuAltRight } from "react-icons/bi";
 import { VscChromeClose } from "react-icons/vsc";
 import { fetchDataFromUrl } from "../utils/api";
 import { CartContext } from "../../../CartContext";
+import CartItem from "./CartItem";
+import CartMenu from "./CartMenu";
 
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [showSubMenu, setShowSubMenu] = useState(null);
   const [categoryData, setCategoryData] = useState(null);
   const [productsData, setProductsData] = useState(null);
+  const [isCartHovered, setCartHovered] = useState(false);
 
   const cart = useContext(CartContext);
   useEffect(() => {
@@ -30,7 +33,7 @@ const Header = () => {
       const res = await fetchDataFromUrl("/api/categories?populate=*", {
         cache: "force-cache",
       });
-      const products = await fetchDataFromUrl("/api/products");
+      const products = await fetchDataFromUrl("/api/products?populate=*");
       setCategoryData(res);
       setProductsData(products);
     } catch (error) {
@@ -52,6 +55,22 @@ const Header = () => {
     (total, quantity) => total + quantity,
     0
   );
+
+  const productsInCart = [];
+
+  cart?.items?.forEach((cartItem) => {
+    const product = productsData?.data?.find(
+      (product) => product.id === cartItem.id
+    );
+
+    if (product) {
+      productsInCart.push({
+        product,
+        size: cartItem.size,
+        quantity: cartItem.quantity,
+      });
+    }
+  });
 
   return (
     <header className="w-full h-[50px] md:h-[80px] bg-primary-color  flex items-center shadow-lg justify-between top-0 z-50 sticky">
@@ -84,16 +103,33 @@ const Header = () => {
           {/* Icon end */}
 
           {/* Icon start */}
-          <Link href="/cart">
-            <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
+
+          <div
+            onMouseEnter={() => setCartHovered(true)}
+            onMouseLeave={() => setCartHovered(false)}
+            className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center  cursor-pointer relative"
+          >
+            <Link href="/cart">
               <BsCart className="text-[15px] md:text-[20px]" />
-              {totalCartItems > 0 ? (
-                <div className="h-[14px] md:h-[18px] min-w-[14px] md:min-w-[18px] rounded-full bg-red-600 absolute top-1 left-5 md:left-7 text-white text-[10px] md:text-[12px] flex justify-center items-center px-[2px] md:px-[5px]">
-                  {totalCartItems}
-                </div>
-              ) : null}
-            </div>
-          </Link>
+            </Link>
+            {isCartHovered && (
+              <div className="absolute top-full right-0 bg-primary-color rounded-lg w-[300px] p-5 py-9 shadow-lg  ">
+                {totalCartItems === 0
+                  ? "No products available"
+                  : productsInCart?.map((item) => {
+                      return <CartMenu key={item?.product?.id} data={item} />;
+                    })
+                    <button>Hello</button>}
+              </div>
+            )}
+
+            {totalCartItems > 0 ? (
+              <div className="h-[14px] md:h-[18px] min-w-[14px] md:min-w-[18px] rounded-full bg-red-600 absolute top-1 left-5 md:left-7 text-white text-[10px] md:text-[12px] flex justify-center items-center px-[2px] md:px-[5px]">
+                {totalCartItems}
+              </div>
+            ) : null}
+          </div>
+
           {/* Icon end */}
 
           {/* Mobile icon start */}

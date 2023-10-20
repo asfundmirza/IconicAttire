@@ -58,39 +58,6 @@ const Menu = ({ showSubMenu, setShowSubMenu, categoryData }) => {
                 showSubMenu === item.id ? "block" : "hidden"
               } absolute top-full left-0 bg-primary-color rounded-lg w-48 py-3 shadow-lg px-3`}
             >
-              {/* {item.name === "Tops"
-                ? subMenuDataTops.map((subItem, index) => (
-                    <Link
-                      key={subItem.id}
-                      href={`/category/${subItem.name}`}
-                      onClick={subMenuHandler}
-                      className={`text-white py-3  flex justify-between items-center ${
-                        index !== subMenuDataTops.length - 1
-                          ? "border-b border-gray-300"
-                          : ""
-                      }`}
-                    >
-                      <span>{subItem.name}</span>
-                      <span className="text-white">{subItem.doc_count}</span>
-                    </Link>
-                  ))
-                : item.name === "Bottoms"
-                ? subMenuDataBottoms.map((subItem, index) => (
-                    <Link
-                      key={subItem.id}
-                      href={`/category/${subItem.name}`}
-                      onClick={subMenuHandler}
-                      className={`text-white py-3 flex justify-between items-center ${
-                        index !== subMenuDataTops.length - 1
-                          ? "border-b border-gray-300"
-                          : ""
-                      }`}
-                    >
-                      <span>{subItem.name}</span>
-                      <span className="text-white">{subItem.doc_count}</span>
-                    </Link>
-                  ))
-                : null} */}
               {filterCategoriesByMenu(item.name)?.map((subItem, index) => (
                 <Link
                   key={subItem.id}

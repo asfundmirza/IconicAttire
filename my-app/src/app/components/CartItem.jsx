@@ -30,11 +30,6 @@ const CartItem = ({ data }) => {
             />
           </div>
 
-          {/* PRODUCT SUBTITLE */}
-          {/* <div className="text-sm md:text-md font-medium text-black/[0.5] block md:hidden">
-            {p.subtitle}
-          </div> */}
-
           {/* PRODUCT PRICE */}
           <div className="text-sm md:text-md font-bold text-black/[0.5] mt-2">
             Rs : {data?.product?.attributes?.price * data?.quantity}
