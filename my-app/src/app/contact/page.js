@@ -1,23 +1,25 @@
 import React from "react";
 import Image from "next/image";
+import { MdLocationOn , MdEmail} from "react-icons/md";
+import {HiPhone} from "react-icons/hi"
 
 const Contact = () => {
   return <div>
 
 
-    <div className="Main px-4 md:px-[4rem] py-[4rem]">
+    <div className="Main px-[1rem] md:px-[4rem] py-[4rem]">
 
       {/* section1 */}
 
 
-      <div className="section1 w-full flex flex-col justify-between mb-4 px-0 md:px-[6rem]">
+      <div className="section1 w-full flex flex-col justify-between mb-4 px-0">
         
         
         <div className="flex justify-center">
           <h1 className="text-3xl md:text-4xl font-bold md:font-semibold">Contact us</h1>
           </div>
 
-          <div className="w-full flex flex-row justify-between py-[6rem]">
+          <div className="w-full flex flex-row justify-between px-[0.4rem] md:px-[2rem] py-[6rem] ">
 
 
 
@@ -28,34 +30,57 @@ const Contact = () => {
 
 {/* icon */}
 {/* <Image src={Pinicon} alt="Pin icon"/> */}
+<div className="flex flex-row items-center justify-center space-x-2">
+<MdLocationOn className="text-[18px] md:text-[24px]"/>
 
-<h2 className="text-lg md:text-2xl font-bold md:font-semibold">Address</h2>
+<h1 className="text-md md:text-2xl font-bold md:font-semibold">Address</h1>
 
-<p className="text-md md:text-lg">Lorem ipsum</p>
+</div>
+<div className="flex flex-row text-center justify-center">
+<p className="text-sm md:text-">Lorem ipsum</p>
+
+</div>
+
+
+
 </div>
 
 {/* Phone Number */}
 
 <div className="Phone No flex flex-col space-y-2 justify-center items-center">
 
-{/* icon */}
+  <div className="flex flex-row items-center justify-center space-x-2">
+    <HiPhone className="text-[18px] md:text-[24px]"/>
+    {/* icon */}
 {/* <Image src={Pinicon} alt="Pin icon"/> */}
 
-<h2 className="text-lg md:text-2xl font-bold md:font-semibold">Phone No</h2>
+<h1 className="text-md md:text-2xl font-bold md:font-semibold">Phone No</h1>
 
-<p className="text-md md:text-lg">Lorem ipsum</p>
+  </div>
+
+  <div className="flex flex-row text-center justify-center">
+<p className="text-sm md:text-">Lorem ipsum</p>
+
+</div>
 </div>
 
 {/* Email */}
+
 
 <div className="Adress flex flex-col space-y-2 justify-center items-center">
 
 {/* icon */}
 {/* <Image src={Pinicon} alt="Pin icon"/> */}
+<div className="flex flex-row items-center justify-center space-x-2">
+  <MdEmail className="text-[18px] md:text-[24px]"/>
+  <h1 className="text-md md:text-2xl font-bold md:font-semibold">Email</h1>
 
-<h2 className="text-lg md:text-2xl font-bold md:font-semibold">Email</h2>
+</div>
 
-<p className="text-md md:text-lg">Lorem ipsum</p>
+<div className="flex flex-row text-center justify-center">
+<p className="text-sm md:text-">Lorem ipsum</p>
+
+</div>
 </div>
 
           </div>
