@@ -7,21 +7,53 @@ import Menu from "./Menu";
 import Image from "next/image";
 import Sitelogo from "../../../public/images/logo.svg";
 
-import { IoMdHeartEmpty } from "react-icons/io";
 import { BsCart } from "react-icons/bs";
 import { BiMenuAltRight } from "react-icons/bi";
 import { VscChromeClose } from "react-icons/vsc";
 import { fetchDataFromUrl } from "../utils/api";
 import { CartContext } from "../../../CartContext";
-import CartItem from "./CartItem";
 import CartMenu from "./CartMenu";
+import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import Button from "@mui/material/Button";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import Divider from "@mui/material/Divider";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import ListSubheader from "@mui/material/ListSubheader";
+import Collapse from "@mui/material/Collapse";
+import ExpandLess from "@mui/icons-material/ExpandLess";
+import ExpandMore from "@mui/icons-material/ExpandMore";
 
 const Header = () => {
-  const [mobileMenu, setMobileMenu] = useState(false);
   const [showSubMenu, setShowSubMenu] = useState(null);
   const [categoryData, setCategoryData] = useState(null);
   const [productsData, setProductsData] = useState(null);
   const [isCartHovered, setCartHovered] = useState(false);
+  const [mobileMenu, setMobileMenu] = useState({
+    right: false,
+  });
+  const [topsMobileMenu, setTopsMobileMenu] = useState(true);
+  const [bottomsMobileMenu, setBottomsMobileMenu] = useState(true);
+  const TopsMobileMenuHandler = () => {
+    setTopsMobileMenu(!topsMobileMenu);
+  };
+  const BottomsMobileMenuHandler = () => {
+    setBottomsMobileMenu(!bottomsMobileMenu);
+  };
+  const toggleDrawer = (anchor, open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+
+    setMobileMenu({ ...mobileMenu, [anchor]: open });
+  };
 
   const cart = useContext(CartContext);
   useEffect(() => {
@@ -72,6 +104,8 @@ const Header = () => {
     }
   });
 
+  const subTotal = cart.getTotalCost(productsInCart, productsData);
+
   return (
     <header className="w-full h-[50px] md:h-[80px] bg-primary-color  flex items-center shadow-lg justify-between top-0 z-50 sticky">
       <Wrapper className="h-[60px] flex justify-between items-center">
@@ -90,40 +124,32 @@ const Header = () => {
           categoryData={categoryData}
         />
 
-        {mobileMenu && <MenuMobile />}
-
         <div className="flex items-center gap-2 text-white">
-          {/* Icon start */}
-          <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center hover:bg-black/[0.05] cursor-pointer relative">
-            <IoMdHeartEmpty className="text-[19px] md:text-[24px]" />
-            <div className="h-[14px] md:h-[18px] min-w-[14px] md:min-w-[18px] rounded-full bg-red-600 absolute top-1 left-5 md:left-7 text-white text-[10px] md:text-[12px] flex justify-center items-center px-[2px] md:px-[5px]">
-              51
-            </div>
-          </div>
-          {/* Icon end */}
-
           {/* Icon start */}
 
           <div
             onMouseEnter={() => setCartHovered(true)}
             onMouseLeave={() => setCartHovered(false)}
-            className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center  cursor-pointer relative"
+            className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center   relative"
           >
             <Link href="/cart">
-              <BsCart className="text-[15px] md:text-[20px]" />
+              <BsCart className="text-[15px] md:text-[20px] cursor-pointer" />
             </Link>
             {isCartHovered && (
-              <div className="absolute top-full right-0 bg-primary-color rounded-lg w-[300px] p-5 py-9 shadow-lg  ">
+              <div className="absolute top-full right-0 bg-primary-color rounded-xl w-[300px] p-5 py-9 shadow-lg  ">
                 {totalCartItems === 0 ? (
-                  "No products available"
+                  <p className="flex justify-center">No Products Found</p>
                 ) : (
                   <>
                     {productsInCart?.map((item) => (
                       <CartMenu key={item?.product?.id} data={item} />
                     ))}
+                    <div className="flex w-ful justify-center py-5 border-b">
+                      SubTotal : {subTotal}
+                    </div>
                     <div className="flex w-full justify-center mt-5">
                       <Link href="/cart">
-                        <button className="flex py-2 px-4 text-center font-bold bg-secondary-color rounded-xl">
+                        <button className="flex py-2 px-4 text-center font-bold bg-secondary-color rounded-xl cursor-pointer">
                           View Cart
                         </button>
                       </Link>
@@ -144,12 +170,96 @@ const Header = () => {
 
           {/* Mobile icon start */}
           <div className="w-8 md:w-12 h-8 md:h-12 rounded-full flex md:hidden justify-center items-center hover:bg-black/[0.05] cursor-pointer relative -mr-2">
-            {mobileMenu ? (
-              <VscChromeClose className="text-[16px]" />
-            ) : (
-              <BiMenuAltRight className="text-[20px]" />
-            )}
+            <BiMenuAltRight
+              onClick={toggleDrawer("right", true)}
+              className="text-[20px]"
+            />
           </div>
+          {/* mobile menu drawer */}
+          <Drawer
+            anchor="right"
+            open={mobileMenu.right}
+            onClose={toggleDrawer("right", false)}
+          >
+            <List
+              sx={{ width: "100%", width: 270, bgcolor: "background.paper" }}
+              component="nav"
+              aria-labelledby="nested-list-subheader"
+              subheader={
+                <ListSubheader component="div" id="nested-list-subheader">
+                  Menu
+                </ListSubheader>
+              }
+            >
+              <ListItemButton onClick={TopsMobileMenuHandler}>
+                <ListItemText primary="Tops" />
+                {topsMobileMenu ? <ExpandLess /> : <ExpandMore />}
+              </ListItemButton>
+              <Collapse in={topsMobileMenu} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <Link href="/category/shirts">
+                    <ListItemButton
+                      onClick={toggleDrawer("right", false)}
+                      sx={{ pl: 4 }}
+                    >
+                      <ListItemText primary="Shirts" />
+                    </ListItemButton>
+                  </Link>
+                  <Divider />
+                  <Link href="/category/jackets">
+                    <ListItemButton
+                      onClick={toggleDrawer("right", false)}
+                      sx={{ pl: 4 }}
+                    >
+                      <ListItemText primary="Jackets" />
+                    </ListItemButton>
+                  </Link>
+                </List>
+              </Collapse>
+              <Divider />
+              <ListItemButton onClick={BottomsMobileMenuHandler}>
+                <ListItemText primary="Bottoms" />
+                {bottomsMobileMenu ? <ExpandLess /> : <ExpandMore />}
+              </ListItemButton>
+              <Collapse in={bottomsMobileMenu} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <Link href="/category/shorts">
+                    <ListItemButton
+                      onClick={toggleDrawer("right", false)}
+                      sx={{ pl: 4 }}
+                    >
+                      <ListItemText primary="Shorts" />
+                    </ListItemButton>
+                  </Link>
+                  <Divider />
+                  <Link href="/category/pants">
+                    <ListItemButton
+                      onClick={toggleDrawer("right", false)}
+                      sx={{ pl: 4 }}
+                    >
+                      <ListItemText primary="Pants" />
+                    </ListItemButton>
+                  </Link>
+                </List>
+              </Collapse>
+              <Divider />
+              <ListItem disablePadding>
+                <Link href="/about">
+                  <ListItemButton onClick={toggleDrawer("right", false)}>
+                    <ListItemText primary="About" />
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+              <Divider />
+              <ListItem disablePadding>
+                <Link href="/contact">
+                  <ListItemButton onClick={toggleDrawer("right", false)}>
+                    <ListItemText primary="Contact" />
+                  </ListItemButton>
+                </Link>
+              </ListItem>
+            </List>
+          </Drawer>
           {/* Mobile icon end */}
         </div>
       </Wrapper>
