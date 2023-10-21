@@ -116,7 +116,7 @@ const Category = ({ params }) => {
               onClick={toggleDrawer("left", false)}
               onKeyDown={toggleDrawer("left", false)}
             >
-              {/* Custom Content 2 - Filter By Price */}
+              {/* mobile filtering  */}
               <div className="flex flex-col gap-3">
                 <p className="text-xl font-custom-font text-gray-600 font-semibold">
                   Filter By Price
@@ -148,10 +148,9 @@ const Category = ({ params }) => {
                 </p>
               </div>
 
-              {/* Divider */}
               <Divider />
 
-              {/* Custom Content 3 - Sorting */}
+              {/* mobile sorting */}
               <div className="flex flex-col gap-3">
                 <p className="text-xl font-custom-font text-gray-600 font-semibold">
                   Sort By
@@ -205,6 +204,7 @@ const Category = ({ params }) => {
                 className="bg-slate-100 border-primary-color p-2 rounded-md w-60 "
               />
             </div>
+            <Divider />
             {/* filter by price */}
             <div className="flex flex-col gap-3 ">
               <p className="text-xl font-custom-font text-gray-600 font-semibold">
@@ -236,6 +236,7 @@ const Category = ({ params }) => {
                 Price : {value[0]}-{value[1]}
               </p>
             </div>
+            <Divider />
             {/* sorting */}
             <div className="flex flex-col gap-3 ">
               <p className="text-xl font-custom-font text-gray-600 font-semibold">
