@@ -19,7 +19,9 @@ const data = [
 //   { id: 2, name: "Pants", doc_count: 8 },
 // ];
 
-const Menu = ({ showSubMenu, setShowSubMenu, categoryData }) => {
+const Menu = ({ categoryData }) => {
+  const [showSubMenu, setShowSubMenu] = useState(null);
+
   const subMenuHandler = () => {
     setShowSubMenu(null);
   };
@@ -48,13 +50,13 @@ const Menu = ({ showSubMenu, setShowSubMenu, categoryData }) => {
       {data.map((item) => (
         <li
           key={item.id}
-          className="relative group"
+          className="relative"
           onMouseEnter={() => setShowSubMenu(item.id)}
           onMouseLeave={() => setShowSubMenu(null)}
         >
           {item.subMenu ? (
             <div
-              className={`group-hover:block  ${
+              className={` ${
                 showSubMenu === item.id ? "block" : "hidden"
               } absolute top-full left-0 bg-primary-color rounded-lg w-48 py-3 shadow-lg px-3`}
             >
