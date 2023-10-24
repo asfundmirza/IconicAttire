@@ -29,7 +29,6 @@ import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 
 const Header = () => {
-  const [showSubMenu, setShowSubMenu] = useState(null);
   const [categoryData, setCategoryData] = useState(null);
   const [productsData, setProductsData] = useState(null);
   const [isCartHovered, setCartHovered] = useState(false);
@@ -118,11 +117,7 @@ const Header = () => {
           {/* <img src={Sitelogo} className="w-[40px] md:w-[60px]" /> */}
         </Link>
 
-        <Menu
-          showSubMenu={showSubMenu}
-          setShowSubMenu={setShowSubMenu}
-          categoryData={categoryData}
-        />
+        <Menu categoryData={categoryData} />
 
         <div className="flex items-center gap-2 text-white">
           {/* Icon start */}
