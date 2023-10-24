@@ -22,10 +22,6 @@ const data = [
 const Menu = ({ categoryData }) => {
   const [showSubMenu, setShowSubMenu] = useState(null);
 
-  const subMenuHandler = () => {
-    setShowSubMenu(null);
-  };
-
   const filterCategoriesByMenu = (menuName) => {
     return categoryData?.data?.filter((category) => {
       if (
@@ -64,7 +60,7 @@ const Menu = ({ categoryData }) => {
                 <Link
                   key={subItem.id}
                   href={`/category/${subItem.attributes.slug}`}
-                  onClick={subMenuHandler}
+                  onClick={() => setShowSubMenu(null)}
                   className={`text-white py-3  flex justify-between items-center ${
                     index !== filterCategoriesByMenu(item.name).length - 1
                       ? "border-b border-gray-300"
