@@ -184,10 +184,7 @@ export default function Home() {
 
           {/* testimonial */}
           <section className="text-gray-600 body-font">
-            <div className="container px-5 py-24 mx-auto">
-              {/* <div className="flex mx-auto  text-white font-semibold bg-primary-color border-0 py-2 px-8   rounded-md text-lg">
-                What our customers says
-              </div> */}
+            <div className="container px-5 pb-24 mx-auto">
               <button className="flex hover:cursor-default mx-auto mb-20 text-white font-semibold bg-primary-color border-0 py-2 px-8 focus:outline-none  rounded md:text-4xl text-xl">
                 What our customers says
               </button>
