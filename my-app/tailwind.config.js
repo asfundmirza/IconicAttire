@@ -9,6 +9,9 @@ module.exports = {
     extend: {
       screens: {
         "custom-width": "830px",
+        "custom-homeTextWidth-lg": "1120px",
+        "custom-homeTextWidth-md": "960px",
+        "custom-homeTextWidth-sm": "460px",
       },
 
       fontFamily: {

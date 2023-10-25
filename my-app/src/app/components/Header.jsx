@@ -131,7 +131,7 @@ const Header = () => {
               <BsCart className="text-[15px] md:text-[20px] cursor-pointer" />
             </Link>
             {isCartHovered && (
-              <div className="absolute top-full right-0 bg-primary-color rounded-xl w-[300px] p-5 py-9 shadow-lg  ">
+              <div className="absolute top-full right-0 bg-primary-color hidden md:block rounded-xl w-[300px] p-5 py-9 shadow-lg  ">
                 {totalCartItems === 0 ? (
                   <p className="flex justify-center">No Products Found</p>
                 ) : (
