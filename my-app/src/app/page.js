@@ -5,7 +5,7 @@ import WhiteShirt from "../../public/long-shirt_white_FRONT.png";
 import BlackJacket from "../../public/black_FRONT.png";
 import NavyPant from "../../public/pants_navy_FRONT.png";
 import profile from "../../public/images/profile.jpg";
-
+import CircularProgress from "@mui/material/CircularProgress";
 import { useEffect, useState } from "react";
 import { fetchDataFromUrl } from "./utils/api";
 import RelatedProducts from "./components/RelatedProducts";
@@ -60,7 +60,7 @@ export default function Home() {
         </div>
 
         <Wrapper className="max-w-[1300px]  ">
-          {apiProductsData && (
+          {apiProductsData ? (
             <RelatedProducts
               products={apiProductsData}
               ParentClassName="md:mt-0 md:mb-[100px]"
@@ -68,6 +68,10 @@ export default function Home() {
               innerClassName="md:text-4xl mb-12 px-4 py-2 font-semibold bg-primary-color text-white w-fit rounded-lg  "
               text="Our Products"
             />
+          ) : (
+            <div className="flex max-w-[1300px] h-[400px] justify-center items-center">
+              <CircularProgress />
+            </div>
           )}
         </Wrapper>
 
@@ -251,37 +255,6 @@ export default function Home() {
             </div>
           </section>
         </Wrapper>
-
-        {/* Reviews */}
-
-        {/* <div className="w-full bg-[#44608C] flex flex-col md:flex-row px-8 py-[4rem] md:py-[6rem] space-y-6">
-          <div className="w-full md:w-[60%] flex flex-col  space-y-[4rem] px-2 md:px-8 py-[3rem] md:py-[6rem] bg-slate-200 rounded-lg">
-            <h2 className="text-xl md:text-3xl font-custom-font font-semibold text-center md:text-left">
-              What our customer says
-            </h2> */}
-
-        {/* <div className="w-full md[80%]:w flex flex-col space-y-[0.7rem] items-center md:items-start "> */}
-        {/* profile */}
-        {/* <Image
-                src={profileimage}
-                className="w-[5rem] h-[5rem]"
-                alt="profile image"
-              />
-
-              <h2 className="text-lg md:text-2xl font-semibold">Anonymous</h2>
-
-              <p className="text-md md:text-lg text-center md:text-left font-medium font-custom-font">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam,
-              </p>
-            </div>
-          </div>
-
-          <div className="w-full md:w-[40%] flex justify-center items-center">
-            <Image src={clothstore} className="w-[80%]" alt="cloth store" />
-          </div> */}
-        {/* </div> */}
       </div>
     </div>
   );
