@@ -27,7 +27,7 @@ export default function Home() {
     <div>
       <div className="w-full ">
         <div className=" flex flex-col md:flex-row bg-[#EAECFD]">
-          <div className="flex items-center flex-col justify-center mt-9 md:mt-0 py-5 px-4    flex-1 md:flex-[0.9]">
+          <div className="flex items-center flex-col justify-center mt-9 md:mt-0 md:py-5  px-4    flex-1 md:flex-[0.9]">
             {/* Left side content  */}
             <div className="flex flex-col">
               <h3 className="text-sm md:text-xl font-bold md:font-semibold mb-3 md:mb-3">
@@ -49,11 +49,11 @@ export default function Home() {
           </div>
           {/*  Right side content */}
           <div className="flex flex-1 md:flex-[0.6]  mb-4 md:mb-0 md:mt-0  w-full h-fit md:h-auto ">
-            <div className="flex flex-1 px-4 py-4 items-center justify-center object-fill">
+            <div className="flex flex-1 md:px-4 px-8 py-4 items-center justify-center object-fill">
               <Image
                 src={modelimage}
                 alt="cycle "
-                className=" w-[600px] h-[600px]"
+                className=" w-[600px] md:h-[600px] h-[400px]"
               />
             </div>
           </div>
