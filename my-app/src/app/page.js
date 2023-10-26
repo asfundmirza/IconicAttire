@@ -63,7 +63,7 @@ export default function Home() {
           {apiProductsData ? (
             <RelatedProducts
               products={apiProductsData}
-              ParentClassName="md:mt-0 md:mb-[100px]"
+              ParentClassName="md:mt-0 md:mb-[100px] md:mx-[100px]"
               innerParentClassName="justify-center"
               innerClassName="md:text-4xl mb-12 px-4 py-2 font-semibold bg-primary-color text-white w-fit rounded-lg  "
               text="Our Products"

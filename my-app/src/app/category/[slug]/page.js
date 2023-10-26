@@ -77,26 +77,25 @@ const Category = ({ params }) => {
                 />
               </div>
             )}
-            {apiProdData && apiProdData.data.length >= 1 && (
-              <div className="md:hidden flex gap-2 justify-between mt-6 px-5 items-center">
-                <div
-                  onClick={toggleDrawer("left", true)}
-                  className=" flex justify-start gap-1"
-                >
-                  <FilterListIcon />
-                  <div className="text-[18px]">filters</div>
-                </div>
-                <div className="flex justify-end">
-                  <input
-                    type="text"
-                    placeholder="Search"
-                    value={inputValue}
-                    onChange={(e) => setinputValue(e.target.value)}
-                    className="bg-slate-100 border-primary-color text-sm p-3 rounded-md min-w-[200px]"
-                  />
-                </div>
+
+            <div className="md:hidden flex gap-2 justify-between mt-6 px-5 items-center">
+              <div
+                onClick={toggleDrawer("left", true)}
+                className=" flex justify-start gap-1"
+              >
+                <FilterListIcon />
+                <div className="text-[18px]">filters</div>
               </div>
-            )}
+              <div className="flex justify-end">
+                <input
+                  type="text"
+                  placeholder="Search"
+                  value={inputValue}
+                  onChange={(e) => setinputValue(e.target.value)}
+                  className="bg-slate-100 border-primary-color focus:border-primary-color outline-none text-sm p-3 rounded-md min-w-[200px]"
+                />
+              </div>
+            </div>
           </div>
           <Drawer
             anchor="left"
@@ -201,7 +200,7 @@ const Category = ({ params }) => {
                 type="text"
                 value={inputValue}
                 onChange={(e) => setinputValue(e.target.value)}
-                className="bg-slate-100 border-primary-color p-2 rounded-md w-60 "
+                className="bg-slate-100 border-primary-color focus:border-primary-color p-2 rounded-md w-60 "
               />
             </div>
             <Divider />
