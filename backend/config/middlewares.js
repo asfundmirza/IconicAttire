@@ -20,6 +20,7 @@ module.exports = [
   "strapi::logger",
   "strapi::query",
   "strapi::body",
+
   "strapi::session",
   "strapi::favicon",
   "strapi::public",

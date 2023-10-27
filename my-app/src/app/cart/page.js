@@ -7,8 +7,14 @@ import Link from "next/link";
 import Image from "next/image";
 import CartItem from "../components/CartItem";
 import CircularProgress from "@mui/material/CircularProgress";
+import { loadStripe } from "@stripe/stripe-js";
+import { makePaymentRequest } from "../utils/api";
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+);
 
 const Cart = () => {
+  const [loading, setLoading] = useState(false);
   const [productsData, setProductsData] = useState(null);
 
   const cart = useContext(CartContext);
@@ -48,6 +54,21 @@ const Cart = () => {
   // const productName = productsInCart[0]?.product?.attributes?.name;
   // console.log(productsInCart);
 
+  const handlePayment = async () => {
+    try {
+      setLoading(true);
+      const stripe = await stripePromise;
+      const res = await makePaymentRequest("/api/orders", {
+        products: productsInCart,
+      });
+      await stripe.redirectToCheckout({
+        sessionId: res.stripeSession.id,
+      });
+    } catch (e) {
+      setLoading(false);
+      console.log(e.message);
+    }
+  };
   return (
     <div className="w-full md:py-20">
       <Wrapper>
@@ -78,7 +99,7 @@ const Cart = () => {
                   <div className="text-lg font-bold">Summary</div>
 
                   <div className="p-5 my-5 bg-black/[0.05] rounded-xl">
-                    <div className="flex justify-between">
+                    <div className="flex justify-between items-center">
                       <div className="uppercase text-md md:text-lg font-medium text-black">
                         Subtotal
                       </div>
@@ -86,15 +107,15 @@ const Cart = () => {
                         {totalCost}
                       </div>
                     </div>
-                    <div className="flex justify-between border-t mt-5">
-                      <div className="uppercase text-md md:text-lg mt-5 font-medium text-black">
+                    <div className="flex justify-between items-center py-5 border-t mt-5">
+                      <div className="uppercase text-md md:text-lg  font-medium text-black">
                         Shipping
                       </div>
                       <div className="text-md md:text-lg font-medium text-black">
                         {totalCost > 0 ? "200" : "0"}
                       </div>
                     </div>
-                    <div className="flex justify-between py-5 border-t mt-5">
+                    <div className="flex justify-between items-center py-5 border-t ">
                       <div className="uppercase text-md md:text-lg font-medium text-black">
                         Total
                       </div>
@@ -107,10 +128,10 @@ const Cart = () => {
                   {/* BUTTON START */}
                   <button
                     className="w-full py-4 rounded-full bg-primary-color text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75 flex items-center gap-2 justify-center"
-                    // onClick={handlePayment}
+                    onClick={handlePayment}
                   >
                     Checkout
-                    {/* {loading && <img src="/spinner.svg" />} */}
+                    {loading && <CircularProgress />}
                   </button>
                   {/* BUTTON END */}
                 </div>

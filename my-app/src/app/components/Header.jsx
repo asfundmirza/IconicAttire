@@ -9,20 +9,15 @@ import Sitelogo from "../../../public/images/logo.svg";
 
 import { BsCart } from "react-icons/bs";
 import { BiMenuAltRight } from "react-icons/bi";
-import { VscChromeClose } from "react-icons/vsc";
 import { fetchDataFromUrl } from "../utils/api";
 import { CartContext } from "../../../CartContext";
 import CartMenu from "./CartMenu";
-import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ListSubheader from "@mui/material/ListSubheader";
 import Collapse from "@mui/material/Collapse";
 import ExpandLess from "@mui/icons-material/ExpandLess";
@@ -128,7 +123,10 @@ const Header = () => {
             className="w-8 md:w-12 h-8 md:h-12 rounded-full flex justify-center items-center   relative"
           >
             <Link href="/cart">
-              <BsCart className="text-[15px] md:text-[20px] cursor-pointer" />
+              <BsCart
+                onClick={() => setCartHovered(false)}
+                className="text-[15px] md:text-[20px] cursor-pointer"
+              />
             </Link>
             {isCartHovered && (
               <div className="absolute top-full right-0 bg-primary-color hidden md:block rounded-xl w-[300px] p-5 py-9 shadow-lg  ">
