@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <div>
       <div className="w-full ">
-        <div className=" flex flex-col md:flex-row bg-[#EAECFD]">
+        <div className=" flex flex-col md:flex-row bg-[#EAECFD] rounded-br-[90px]">
           <div className="flex items-center flex-col justify-center mt-9 md:mt-0 md:py-5  px-4    flex-1 md:flex-[0.9]">
             {/* Left side content  */}
             <div className="flex flex-col">
