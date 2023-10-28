@@ -35,8 +35,53 @@ module.exports = createCoreController("api::order.order", ({ strapi }) => ({
       );
 
       const session = await stripe.checkout.sessions.create({
-        // shipping_address_collection: { allowed_countries: ["IN"] },
-        // payment_method_types: ["card"],
+        phone_number_collection: {
+          enabled: true,
+        },
+        shipping_options: [
+          // {
+          //   shipping_rate_data: {
+          //     type: 'fixed_amount',
+          //     fixed_amount: {
+          //       amount: 0,
+          //       currency: 'usd',
+          //     },
+          //     display_name: 'Free shipping',
+          //     delivery_estimate: {
+          //       minimum: {
+          //         unit: 'business_day',
+          //         value: 5,
+          //       },
+          //       maximum: {
+          //         unit: 'business_day',
+          //         value: 7,
+          //       },
+          //     },
+          //   },
+          // },
+          {
+            shipping_rate_data: {
+              type: "fixed_amount",
+              fixed_amount: {
+                amount: Math.round(200 * 100),
+                currency: "pkr",
+              },
+              display_name: "Estimated Time",
+              delivery_estimate: {
+                minimum: {
+                  unit: "business_day",
+                  value: 2,
+                },
+                maximum: {
+                  unit: "business_day",
+                  value: 3,
+                },
+              },
+            },
+          },
+        ],
+        shipping_address_collection: { allowed_countries: ["PK"] },
+        payment_method_types: ["card"],
         mode: "payment",
         success_url: process.env.CLIENT_URL + `/success`,
         cancel_url: process.env.CLIENT_URL + "/failed",
