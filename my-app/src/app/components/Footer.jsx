@@ -9,7 +9,7 @@ import { SiAmericanexpress } from "react-icons/si";
 
 const Footer = () => {
   return (
-    <footer className="w-full  bg-primary-color text-white py-8">
+    <footer className="w-full  bg-footer-color text-black py-8">
       <Wrapper className="w-full  md:flex-col">
         <div className="Sitecontent flex flex-col md:flex-row ">
           {/* Site Logo and info */}
@@ -31,26 +31,26 @@ const Footer = () => {
           {/* Useful Links */}
           <div className="w-full flex flex-row py-4 mb-4">
             <div className="w-[80%] gap-y-6  flex flex-col items-start  md:items-center">
-              <h1 className=" text-secondary-color text-md">Useful Links</h1>
+              <h1 className=" text-black text-md">Useful Links</h1>
 
-              <Link href="/" className=" hover:text-secondary-color text-sm">
+              <Link href="/" className=" hover:text-[#3782C7] text-sm">
                 Home
               </Link>
 
               <Link
                 href="/about"
-                className=" hover:text-secondary-color text-sm"
+                className=" hover:text-[#3782C7] text-sm"
               >
                 About
               </Link>
 
               <Link
                 href="/contact"
-                className="hover:text-secondary-color text-sm"
+                className="hover:text-[#3782C7] text-sm"
               >
                 Contact
               </Link>
-              <Link href="/" className=" hover:text-secondary-color text-sm">
+              <Link href="/" className=" hover:text-[#3782C7] text-sm">
                 Terms
               </Link>
             </div>
@@ -58,31 +58,31 @@ const Footer = () => {
             {/* product range */}
 
             <div className="w-[80%] gap-y-6  flex flex-col items-start  md:items-center">
-              <h1 className=" text-secondary-color text-md">Product Range</h1>
+              <h1 className=" text-black text-md">Product Range</h1>
 
               <Link
                 href="/category/jackets"
-                className=" hover:text-secondary-color text-sm"
+                className=" hover:text-[#3782C7] text-sm"
               >
                 Jackets
               </Link>
 
               <Link
                 href="/category/shirts"
-                className=" hover:text-secondary-color text-sm"
+                className=" hover:text-[#3782C7] text-sm"
               >
                 Shirts
               </Link>
 
               <Link
                 href="/category/pants"
-                className=" hover:text-secondary-color text-sm"
+                className=" hover:text-[#3782C7] text-sm"
               >
                 Pants
               </Link>
               <Link
                 href="/category/shorts"
-                className=" hover:text-secondary-color text-sm"
+                className=" hover:text-[#3782C7] text-sm"
               >
                 Shorts
               </Link>
@@ -96,14 +96,14 @@ const Footer = () => {
             <div className="mb-2">
               <label
                 htmlFor="website-admin"
-                className="block mb-2 text-sm font-medium text-secondary-color"
+                className="block mb-2 text-sm font-medium text-black"
               >
                 Username
               </label>
 
               <input
                 type="text"
-                className="rounded-md bg-fieldscustom-color border border-gray-300 text-white focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5   dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="rounded-md bg-field-color border border-gray-300 text-white focus:ring-blue-500 focus:border-blue-500 block flex-1 min-w-0 w-full text-sm p-2.5   dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="User Name"
               ></input>
             </div>
@@ -113,13 +113,13 @@ const Footer = () => {
             <div className="mb-2">
               <label
                 htmlFor="email"
-                className="block mb-2 text-sm font-medium text-secondary-color"
+                className="block mb-2 text-sm font-medium text-black"
               >
                 Your email
               </label>
               <input
                 type="email"
-                className="  border border-gray-300 text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-fieldscustom-color  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                className="  border border-gray-300 text-white text-sm rounded-md focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-field-color  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                 placeholder="name@.com"
                 required
               ></input>
@@ -130,21 +130,21 @@ const Footer = () => {
             <div className="mb-4">
               <label
                 htmlFor="message"
-                className="block mb-2 text-sm font-medium text-secondary-color "
+                className="block mb-2 text-sm font-medium text-black"
               >
                 Your message
               </label>
               <textarea
                 id="message"
                 rows="4"
-                className="block p-2.5 w-full text-sm text-white bg-fieldscustom-color rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                className="block p-2.5 w-full text-sm text-white bg-field-color rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Leave a message..."
               ></textarea>
             </div>
 
             <button
               type="submit"
-              className="text-black bg-secondary-color hover:bg-btnhover-color focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center   dark:focus:ring-blue-800"
+              className="text-white bg-[#4691D7] hover:bg-[#3782C7] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center   dark:focus:ring-blue-800"
             >
               Send
             </button>
@@ -157,9 +157,9 @@ const Footer = () => {
           <div className="icons w-full flex justify-center gap-x-6">
             <h3>Pay with</h3>
 
-            <FaCcPaypal className="cursor-pointer hover:text-secondary-color text-[22px] md:text-[28px]" />
-            <FaCcMastercard className="cursor-pointer hover:text-secondary-color text-[22px] md:text-[28px]" />
-            <SiAmericanexpress className="cursor-pointer hover:text-secondary-color text-[22px] md:text-[28px]" />
+            <FaCcPaypal className="cursor-pointer hover:text-[#3782C7]  text-[22px] md:text-[28px]" />
+            <FaCcMastercard className="cursor-pointer hover:text-[#3782C7]  text-[22px] md:text-[28px]" />
+            <SiAmericanexpress className="cursor-pointer hover:text-[#3782C7]  text-[22px] md:text-[28px]" />
           </div>
         </div>
 
@@ -170,9 +170,9 @@ const Footer = () => {
             <Image width={80} src={sitelogo} alt="site logo" />
 
             <div className="flex flex-row gap-x-6">
-              <FaFacebookF className="cursor-pointer hover:text-secondary-color" />
-              <FaTwitter className="cursor-pointer hover:text-secondary-color" />
-              <FaInstagram className="cursor-pointer hover:text-secondary-color" />
+              <FaFacebookF className="cursor-pointer hover:text-[#3782C7] " />
+              <FaTwitter className="cursor-pointer hover:text-[#3782C7]" />
+              <FaInstagram className="cursor-pointer hover:text-[#3782C7] " />
             </div>
           </div>
         </div>
