@@ -1,7 +1,7 @@
 import React from "react";
 import Wrapper from "./Wrapper";
 import Image from "next/image";
-import sitelogo from "../../../public/images/logo.svg";
+import sitelogo from "../../../public/images/sitelogo.svg";
 import Link from "next/link";
 import { FaFacebookF, FaTwitter, FaInstagram } from "react-icons/fa";
 import { FaCcPaypal, FaCcMastercard } from "react-icons/fa";
@@ -9,7 +9,7 @@ import { SiAmericanexpress } from "react-icons/si";
 
 const Footer = () => {
   return (
-    <footer className="w-full  bg-[#64A1DC] text-black py-8">
+    <footer className="w-full  bg-footer-color text-black py-8">
       <Wrapper className="w-full  md:flex-col">
         <div className="Sitecontent flex flex-col md:flex-row ">
           {/* Site Logo and info */}

@@ -5,7 +5,7 @@ import Wrapper from "./Wrapper";
 import Link from "next/link";
 import Menu from "./Menu";
 import Image from "next/image";
-import Sitelogo from "../../../public/images/logo.svg";
+import Sitelogo from "../../../public/images/sitelogo.svg";
 
 import { BsCart } from "react-icons/bs";
 import { BiMenuAltRight } from "react-icons/bi";
