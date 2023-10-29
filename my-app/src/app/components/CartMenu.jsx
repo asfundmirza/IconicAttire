@@ -18,7 +18,7 @@ const CartMenu = ({ data }) => {
           />
         </div>
         <div className="flex flex-col gap-2 ">
-          <div className="text-sm font-semibold text-white">
+          <div className="text-sm font-semibold text-black">
             {data?.product?.attributes?.name}
           </div>
           <div className="flex gap-5">

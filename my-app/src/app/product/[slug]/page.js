@@ -160,16 +160,16 @@ const ProductDetails = ({ params }) => {
                         productQuantity - 1 >= 1 ? productQuantity - 1 : 1
                       )
                     }
-                    className="w-8 h-8 bg-primary-color text-white rounded-md flex items-center justify-center"
+                    className="w-8 h-8 text-black rounded-md flex text-2xl items-center justify-center"
                   >
                     -
                   </button>
-                  <div className="w-8 h-8 flex items-center justify-center mx-2">
+                  <div className="w-8 h-8 flex items-center justify-center">
                     {productQuantity}
                   </div>
                   <button
                     onClick={() => setProductQuantity(productQuantity + 1)}
-                    className="w-8 h-8 bg-primary-color text-white flex rounded-md items-center justify-center"
+                    className="w-8 h-8 text-black flex rounded-md text-2xl items-center justify-center"
                   >
                     +
                   </button>

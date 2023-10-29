@@ -5,8 +5,8 @@ import WhiteShirt from "../../public/long-shirt_white_FRONT.png";
 import BlackJacket from "../../public/black_FRONT.png";
 import NavyPant from "../../public/pants_navy_FRONT.png";
 import profile from "../../public/images/profile.jpg";
-import winter from "../../public/winter.jpg"
-import upcoming from "../../public/upcoming.jpg"
+import winter from "../../public/winter.jpg";
+import upcoming from "../../public/upcoming.jpg";
 import CircularProgress from "@mui/material/CircularProgress";
 import { useEffect, useState } from "react";
 import { fetchDataFromUrl } from "./utils/api";
@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <div>
       <div className="w-full ">
-        <div className="w-full h-screen flex flex-col md:flex-row bg-gradient-radial from-[#F3F9FF] to-[#DAECFF] ">
+        <div className="w-full h-screen relative flex flex-col md:flex-row bg-gradient-radial from-[#F3F9FF] to-[#DAECFF] ">
           <div className="flex items-center flex-col justify-center mt-9 md:mt-0 md:py-5  px-4    flex-1 md:flex-[0.9]">
             {/* Left side content  */}
             <div className="flex flex-col">
@@ -50,8 +50,8 @@ export default function Home() {
             </div>
           </div>
           {/*  Right side content */}
-          <div className="flex flex-1 md:flex-[0.6]  mb-4 md:mb-0 md:mt-0  w-full h-fit md:h-auto ">
-            <div className="flex flex-1 md:px-4 px-8 py-4 items-center justify-center object-fill">
+          <div className="flex flex-1 md:flex-[0.6]  mb-4 md:mb-0 md:mt-0   w-full h-fit md:h-auto ">
+            <div className="flex flex-1 md:px-4 px-8  items-center justify-center absolute bottom-0 object-fill">
               <Image
                 src={modelimage}
                 alt="cycle "
@@ -81,39 +81,38 @@ export default function Home() {
 
         <div className="w-full bg-[#EBD96B] py-[5rem]  px-[2rem] flex flex-col space-y-6 justify-center items-center">
           <div className="w-full flex flex-col items-center justify-center ">
-          <h1 className="text-4xl font-bold font-custom-font">Upto 70% off-All T-Shirts</h1>
+            <h1 className="text-4xl font-bold font-custom-font">
+              Upto 70% off-All T-Shirts
+            </h1>
           </div>
           <div className="w-full flex flex-row justify-center pt-[1rem]">
-          <Link href={"/category/shirts"}>
-                <button className="flex flex-row justify-center text-white font-semibold bg-slate-900 border-0 py-2 px-8 focus:outline-none  rounded text-lg">
-                  Explore More
-                </button>
-              </Link>
+            <Link href={"/category/shirts"}>
+              <button className="flex flex-row justify-center text-white font-semibold bg-slate-900 border-0 py-2 px-8 focus:outline-none  rounded text-lg">
+                Explore More
+              </button>
+            </Link>
           </div>
-
-
-         
-
-          
         </div>
 
         <Wrapper>
+          {/* upcoming */}
 
-           {/* upcoming */}
-
-           <div className="w-full flex flex-col md:flex-row py-[6rem]  space-x-6">
+          <div className="w-full flex flex-col md:flex-row py-[6rem]  space-x-6">
             <div className="winter ">
-              <Image src={winter} className="w-[800px] h-[500px] rounded-md"/>
+              <Image src={winter} className="w-[800px] h-[500px] rounded-md" />
             </div>
             <div className="upcoming">
-              <Image src={upcoming} className="w-[800px] h-[500px] rounded-md"/>
+              <Image
+                src={upcoming}
+                className="w-[800px] h-[500px] rounded-md"
+              />
             </div>
-           </div>
+          </div>
           {/* Stats */}
           {/* <section className="text-gray-300 body-font ">
             <div className="container px-5 py-13 mx-auto"> */}
-              {/* <div className="text-center text-5xl text-black mb-9 ">STATS</div> */}
-              {/* <div className="flex flex-wrap bg-primary-color rounded-lg -m-4 py-6 text-center">
+          {/* <div className="text-center text-5xl text-black mb-9 ">STATS</div> */}
+          {/* <div className="flex flex-wrap bg-primary-color rounded-lg -m-4 py-6 text-center">
                 <div className="p-4 sm:w-1/4 w-1/2">
                   <h2 className="title-font font-medium sm:text-4xl text-3xl text-white">
                     2.7K
@@ -224,9 +223,8 @@ export default function Home() {
             <div className="container px-5 pb-24 mx-auto">
               <button className="flex hover:cursor-default mx-auto mb-20 text-black font-semibold  border-0 py-2 px-8 focus:outline-none  rounded md:text-4xl text-xl">
                 What our customers says
-               
               </button>
-              
+
               <div className="flex flex-wrap -m-4">
                 <div className="lg:w-1/3 lg:mb-0 mb-6 p-4">
                   <div className="h-full text-center">
