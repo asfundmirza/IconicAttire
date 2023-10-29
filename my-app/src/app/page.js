@@ -144,7 +144,7 @@ export default function Home() {
 
           {/* pics description */}
 
-          <section className="text-gray-600 body-font">
+          {/* <section className="text-gray-600 body-font">
             <div className="container px-5 py-24 mx-auto">
               <Link href={"/category/shirts"}>
                 <button className="flex mx-auto mb-20 text-black font-semibold bg-secondary-color border-0 py-2 px-8 focus:outline-none  rounded text-lg">
@@ -217,7 +217,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </section>
+          </section> */}
 
           {/* testimonial */}
           <section className="text-gray-600 body-font">
