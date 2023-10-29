@@ -9,7 +9,7 @@ import { SiAmericanexpress } from "react-icons/si";
 
 const Footer = () => {
   return (
-    <footer className="w-full  bg-footer-color text-black py-8">
+    <footer className="w-full  bg-[#64A1DC] text-black py-8">
       <Wrapper className="w-full  md:flex-col">
         <div className="Sitecontent flex flex-col md:flex-row ">
           {/* Site Logo and info */}
@@ -30,7 +30,7 @@ const Footer = () => {
 
           {/* Useful Links */}
           <div className="w-full flex flex-row py-4 mb-4">
-            <div className="w-[80%] gap-y-6  flex flex-col items-start  md:items-center">
+            <div className="w-full md:w-[80%] gap-y-6  flex flex-col items-center  md:items-center">
               <h1 className=" text-black text-md">Useful Links</h1>
 
               <Link href="/" className=" hover:text-[#3782C7] text-sm">
@@ -57,7 +57,7 @@ const Footer = () => {
 
             {/* product range */}
 
-            <div className="w-[80%] gap-y-6  flex flex-col items-start  md:items-center">
+            <div className="w-full md:w-[80%] gap-y-6  flex flex-col items-center  md:items-center">
               <h1 className=" text-black text-md">Product Range</h1>
 
               <Link
@@ -90,10 +90,10 @@ const Footer = () => {
           </div>
 
           {/* Form */}
-          <div className="form w-full mb-4">
+          <div className="form w-full mb-4 space-y-4  md:space-y-2 ">
             {/* UserName */}
 
-            <div className="mb-2">
+            <div className="mb-2 hidden md:flex md:flex-col">
               <label
                 htmlFor="website-admin"
                 className="block mb-2 text-sm font-medium text-black"
@@ -127,7 +127,7 @@ const Footer = () => {
 
             {/* Message */}
 
-            <div className="mb-4">
+            <div className="mb-4 hidden md:flex md:flex-col">
               <label
                 htmlFor="message"
                 className="block mb-2 text-sm font-medium text-black"
@@ -144,7 +144,7 @@ const Footer = () => {
 
             <button
               type="submit"
-              className="text-white bg-[#4691D7] hover:bg-[#3782C7] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center   dark:focus:ring-blue-800"
+              className="text-white bg-[#2A72B5] hover:bg-[#3782C7] focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center   dark:focus:ring-blue-800"
             >
               Send
             </button>
@@ -165,7 +165,7 @@ const Footer = () => {
 
         {/* Social icons */}
 
-        <div className="social py-4">
+        <div className="social py-4 px-[6rem] md:px-0">
           <div className="icons w-full flex justify-between  md:justify-center align-middle gap-x-6">
             <Image width={80} src={sitelogo} alt="site logo" />
 

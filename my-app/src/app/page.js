@@ -5,8 +5,8 @@ import WhiteShirt from "../../public/long-shirt_white_FRONT.png";
 import BlackJacket from "../../public/black_FRONT.png";
 import NavyPant from "../../public/pants_navy_FRONT.png";
 import profile from "../../public/images/profile.jpg";
-import winter from "../../public/winter.svg"
-import upcoming from "../../public/upcoming.svg"
+import winter from "../../public/winter.jpg"
+import upcoming from "../../public/upcoming.jpg"
 import CircularProgress from "@mui/material/CircularProgress";
 import { useEffect, useState } from "react";
 import { fetchDataFromUrl } from "./utils/api";
@@ -103,10 +103,10 @@ export default function Home() {
 
            <div className="w-full flex flex-col md:flex-row py-[6rem]  space-x-6">
             <div className="winter ">
-              <Image src={winter}/>
+              <Image src={winter} className="w-[800px] h-[500px] rounded-md"/>
             </div>
             <div className="upcoming">
-              <Image src={upcoming}/>
+              <Image src={upcoming} className="w-[800px] h-[500px] rounded-md"/>
             </div>
            </div>
           {/* Stats */}

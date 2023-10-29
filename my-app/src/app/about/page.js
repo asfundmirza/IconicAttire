@@ -5,7 +5,10 @@ const About = () => {
   return <div>
 
     <div className="main">
-
+      {/* banner */}
+      <div className="w-full">
+        
+      </div>
       <div className="section1 w-full flex flex-col md:flex-row px-4 py-[3rem] md:py-[6rem]">
 
         <div className="w-full md:w-[50%] flex flex-row justify-center items-center">
