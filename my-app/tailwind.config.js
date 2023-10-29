@@ -21,7 +21,8 @@ module.exports = {
       colors: {
         "primary-color": "#011B43",
         "secondary-color": "#FBE5B9",
-        "btnhover-color": "#FFF0D3",
+        "btn-color" : "#2A72B5",
+        "btnhover-color": "#3782C7",
         "footer-color" : "#C2DEFF",
         "field-color" : "#E9F4FF",
       },
