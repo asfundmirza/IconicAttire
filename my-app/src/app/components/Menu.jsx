@@ -42,7 +42,7 @@ const Menu = ({ categoryData }) => {
   };
 
   return (
-    <ul className="hidden md:flex items-center gap-8 font-medium text-white">
+    <ul className="hidden md:flex items-center gap-8 font-custom-font font-medium text-black">
       {data.map((item) => (
         <li
           key={item.id}

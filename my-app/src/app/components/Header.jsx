@@ -101,7 +101,7 @@ const Header = () => {
   const subTotal = cart.getTotalCost(productsInCart, productsData);
 
   return (
-    <header className="w-full h-[50px] md:h-[80px] bg-primary-color  flex items-center shadow-lg justify-between top-0 z-50 sticky">
+    <header className="w-full h-[50px] md:h-[80px] bg-white flex items-center shadow-lg justify-between top-0 z-50 sticky">
       <Wrapper className="h-[60px] flex justify-between items-center">
         <Link href="/">
           <Image
@@ -114,7 +114,7 @@ const Header = () => {
 
         <Menu categoryData={categoryData} />
 
-        <div className="flex items-center gap-2 text-white">
+        <div className="flex items-center gap-2 text-black">
           {/* Icon start */}
 
           <div
@@ -129,7 +129,7 @@ const Header = () => {
               />
             </Link>
             {isCartHovered && (
-              <div className="absolute top-full right-0 bg-primary-color hidden md:block rounded-xl w-[300px] p-5 py-9 shadow-lg  ">
+              <div className="absolute top-full right-0 bg-white hidden md:block rounded-xl w-[300px] p-5 py-9 shadow-lg  ">
                 {totalCartItems === 0 ? (
                   <p className="flex justify-center">No Products Found</p>
                 ) : (
