@@ -22,7 +22,7 @@ module.exports = {
         "primary-color": "#011B43",
         "secondary-color": "#FBE5B9",
         "btnhover-color": "#FFF0D3",
-        "footer-color" : "#9FD0FF",
+        "footer-color" : "#C2DEFF",
         "field-color" : "#E9F4FF",
       },
 
