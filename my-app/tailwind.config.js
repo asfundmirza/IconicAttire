@@ -15,7 +15,7 @@ module.exports = {
       },
 
       fontFamily: {
-        "custom-font": "Inter",
+        "custom-font": "Roboto",
       },
 
       colors: {
