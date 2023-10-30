@@ -98,11 +98,9 @@ export default function Home() {
           {/* upcoming */}
 
           <div className="w-full flex flex-col md:flex-row py-[6rem]  space-x-0 space-y-4 md:space-y-0 md:space-x-10">
-            <div className="winter w-full bg-slate-900 flex justify-center items-center ">
-              <div className=" absolute z-10 ">
-                <h3 className="text-white text-xl md:text-4xl"> Winter Sale</h3>
-              </div>
-              <Image src={winter} className="w-[800px] md:w-[1200px] rounded-md md:rounded-lg" />
+            <div className="winter w-full bg-slate-900 flex justify-center items-center  ">
+              
+              <Image src={winter} className="w-[800px] md:w-[1200px] hover:blur-[1px] cursor-pointer rounded-md" />
 
              
             </div>
