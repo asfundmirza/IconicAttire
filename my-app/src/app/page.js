@@ -79,16 +79,16 @@ export default function Home() {
 
         {/* off banner */}
 
-        <div className="w-full bg-[#EBD96B] py-[5rem]  px-[2rem] flex flex-col space-y-6 justify-center items-center">
+        <div className="w-full bg-[#EBD96B] py-[2rem] md:py-[5rem]  px-[2rem] flex flex-col space-y-6 justify-center items-center">
           <div className="w-full flex flex-col items-center justify-center ">
-            <h1 className="text-4xl font-bold font-custom-font">
+            <h1 className="text-xl md:text-4xl font-bold font-custom-font">
               Upto 70% off-All T-Shirts
             </h1>
           </div>
-          <div className="w-full flex flex-row justify-center pt-[1rem]">
+          <div className="w-full flex flex-row justify-center pt-[0.2rem] md:pt-[2rem]">
             <Link href={"/category/shirts"}>
-              <button className="flex flex-row justify-center text-white font-semibold bg-slate-900 border-0 py-2 px-8 focus:outline-none  rounded text-lg">
-                Explore More
+              <button className="flex flex-row justify-center text-white font-semibold bg-slate-900 hover:bg-slate-800 border-0 py-[0.4rem] md:py-2 px-4 md:px-8 focus:outline-none  rounded-md ">
+                <h1 className="text-sm md:text-lg">Explore More</h1>
               </button>
             </Link>
           </div>
@@ -97,14 +97,19 @@ export default function Home() {
         <Wrapper>
           {/* upcoming */}
 
-          <div className="w-full flex flex-col md:flex-row py-[6rem]  space-x-6">
-            <div className="winter ">
-              <Image src={winter} className="w-[800px] h-[500px] rounded-md" />
+          <div className="w-full flex flex-col md:flex-row py-[6rem]  space-x-0 space-y-4 md:space-y-0 md:space-x-10">
+            <div className="winter w-full bg-slate-900 flex justify-center items-center ">
+              <div className=" absolute z-10 ">
+                <h3 className="text-white text-xl md:text-4xl"> Winter Sale</h3>
+              </div>
+              <Image src={winter} className="w-[800px] md:w-[1200px] rounded-md md:rounded-lg" />
+
+             
             </div>
-            <div className="upcoming">
+            <div className="upcoming w-full">
               <Image
                 src={upcoming}
-                className="w-[800px] h-[500px] rounded-md"
+                className="w-[800px]  rounded-md"
               />
             </div>
           </div>
