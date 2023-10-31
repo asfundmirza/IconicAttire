@@ -38,7 +38,7 @@ const CartMenu = ({ data }) => {
       <div className="flex justify-end">
         <RiDeleteBin6Line
           onClick={() => cart.deleteFromCart(data?.product?.id, data?.size)}
-          className="cursor-pointer text-white text-[16px] "
+          className="cursor-pointer text-black text-[16px] "
         />
       </div>
     </div>

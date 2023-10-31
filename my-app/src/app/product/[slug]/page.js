@@ -125,7 +125,7 @@ const ProductDetails = ({ params }) => {
                           : "cursor-not-allowed bg-black/[0.1] opacity-50"
                       } ${
                         selectedSize === item.size
-                          ? "border-primary-color bg-primary-color text-white"
+                          ? "border-btn-color bg-btn-color text-white"
                           : ""
                       }`}
                       onClick={() => {
@@ -178,7 +178,7 @@ const ProductDetails = ({ params }) => {
 
               {/* ADD TO CART BUTTON START */}
               <button
-                className="w-full py-4 rounded-full bg-primary-color text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
+                className="w-full py-4 rounded-full bg-btn-color text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
                 onClick={() => {
                   if (!selectedSize) {
                     setShowError(true);

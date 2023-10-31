@@ -54,21 +54,21 @@ const Menu = ({ categoryData }) => {
             <div
               className={` ${
                 showSubMenu === item.id ? "block" : "hidden"
-              } absolute top-full left-0 bg-primary-color rounded-lg w-48 py-3 shadow-lg px-3`}
+              } absolute top-full left-0 bg-white rounded-lg w-48 py-3 shadow-lg px-3`}
             >
               {filterCategoriesByMenu(item.name)?.map((subItem, index) => (
                 <Link
                   key={subItem.id}
                   href={`/category/${subItem.attributes.slug}`}
                   onClick={() => setShowSubMenu(null)}
-                  className={`text-white py-3  flex justify-between items-center ${
+                  className={`text-black py-3  flex justify-between hover:bg-gray-50 items-center ${
                     index !== filterCategoriesByMenu(item.name).length - 1
                       ? "border-b border-gray-300"
                       : ""
                   }`}
                 >
                   <span>{subItem.attributes.name}</span>
-                  <span className="text-white">
+                  <span className="text-black">
                     {`(${subItem.attributes.products.data.length})`}
                   </span>
                 </Link>

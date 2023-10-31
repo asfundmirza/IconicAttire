@@ -124,7 +124,7 @@ const Category = ({ params }) => {
                   style={{
                     borderTop: "4px solid",
                     width: "50px",
-                    color: "lightgray",
+                    color: "#2A72B5",
                   }}
                 ></div>
                 <div style={{ width: 230 }}>
@@ -139,7 +139,7 @@ const Category = ({ params }) => {
                     step={500}
                     marks
                     disableSwap
-                    sx={{ color: "#011B43" }}
+                    sx={{ color: "#2A72B5" }}
                   />
                 </div>
                 <p className="flex justify-end">
@@ -159,7 +159,7 @@ const Category = ({ params }) => {
                   style={{
                     borderTop: "4px solid",
                     width: "50px",
-                    color: "lightgray",
+                    color: "#2A72B5",
                   }}
                 ></div>
                 <Box sx={{ minWidth: 120 }}>
@@ -193,7 +193,7 @@ const Category = ({ params }) => {
                 style={{
                   borderTop: "4px solid",
                   width: "50px",
-                  color: "lightgray",
+                  color: "#2A72B5",
                 }}
               ></div>
               <input
@@ -213,7 +213,7 @@ const Category = ({ params }) => {
                 style={{
                   borderTop: "4px solid",
                   width: "50px",
-                  color: "lightgray",
+                  color: "#2A72B5",
                 }}
               ></div>
               <div style={{ width: 230 }}>
@@ -228,7 +228,7 @@ const Category = ({ params }) => {
                   step={500}
                   marks
                   disableSwap
-                  sx={{ color: "#011B43" }}
+                  sx={{ color: "#2A72B5" }}
                 />
               </div>
               <p className="flex justify-end">
@@ -246,7 +246,7 @@ const Category = ({ params }) => {
                 style={{
                   borderTop: "4px solid",
                   width: "50px",
-                  color: "lightgray",
+                  color: "#2A72B5",
                 }}
               ></div>
               <Box sx={{ minWidth: 120 }}>
