@@ -95,22 +95,30 @@ export default function Home() {
         </div>
 
         <Wrapper>
-          {/* upcoming */}
+        <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-4 space-y-4 md:space-y-0 py-[4rem]">
+        {/* overlay example */}
+<div className="relative group">
+  <Image src={winter} alt="winter" className="w-full h-auto hover:blur-[10px] rounded-md" />
+  <div className="absolute inset-0 bg-black opacity-100 md:opacity-0 group-hover:opacity-100 bg-opacity-30 md:bg-opacity-0 cursor-pointer group-hover:bg-opacity-40 transition duration-600 ease-in  flex items-center justify-center rounded-md">
+    <p className="font-custom-font font-medium text-2xl md:text-4xl text-white">Winter Sale</p>
+  </div>
+</div>
+{/* overlay example */}
+<div className="relative group">
+  <Image src={upcoming} alt="upcoming" className="w-full h-auto hover:blur-[10px] rounded-md" />
+  <div className="absolute inset-0 bg-black opacity-100 md:opacity-0 group-hover:opacity-100 bg-opacity-30  md:bg-opacity-0 cursor-pointer group-hover:bg-opacity-40 transition duration-600 ease-in  flex items-center justify-center rounded-md">
+    <p className="font-custom-font font-medium text-2xl md:text-4xl text-white ">Upcoming Season</p>
+  </div>
+</div>
 
-          <div className="w-full flex flex-col md:flex-row py-[6rem]  space-x-0 space-y-4 md:space-y-0 md:space-x-10">
-            <div className="winter w-full bg-slate-900 flex justify-center items-center  ">
-              
-              <Image src={winter} className="w-[800px] md:w-[1200px] hover:blur-[1px] cursor-pointer rounded-md" />
 
-             
-            </div>
-            <div className="upcoming w-full">
-              <Image
-                src={upcoming}
-                className="w-[800px]  rounded-md"
-              />
-            </div>
-          </div>
+
+
+        </div>
+        </Wrapper>
+
+        <Wrapper>
+         
           {/* Stats */}
           {/* <section className="text-gray-300 body-font ">
             <div className="container px-5 py-13 mx-auto"> */}
@@ -291,6 +299,8 @@ export default function Home() {
             </div>
           </section>
         </Wrapper>
+        
+        
       </div>
     </div>
   );
