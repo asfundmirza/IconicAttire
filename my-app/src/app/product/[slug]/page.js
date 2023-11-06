@@ -178,7 +178,7 @@ const ProductDetails = ({ params }) => {
 
               {/* ADD TO CART BUTTON START */}
               <button
-                className="w-full py-4 rounded-full bg-btn-color text-white text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
+                className="w-full py-4 rounded-full bg-btn-color mb-12 text-white text-lg font-medium transition-transform active:scale-95  hover:opacity-75"
                 onClick={() => {
                   if (!selectedSize) {
                     setShowError(true);
@@ -189,13 +189,6 @@ const ProductDetails = ({ params }) => {
                   } else {
                     cart.addOneToCart(productId, selectedSize, productQuantity);
 
-                    // dispatch(
-                    //   addToCart({
-                    //     ...product?.data?.[0],
-                    //     selectedSize,
-                    //     oneQuantityPrice: p.price,
-                    //   })
-                    // );
                     notify();
                   }
                 }}
@@ -205,10 +198,10 @@ const ProductDetails = ({ params }) => {
               {/* ADD TO CART BUTTON END */}
 
               {/* WHISHLIST BUTTON START */}
-              <button className="w-full py-4 rounded-full border border-black text-lg font-medium transition-transform active:scale-95 flex items-center justify-center gap-2 hover:opacity-75 mb-10">
+              {/* <button className="w-full py-4 rounded-full border border-black text-lg font-medium transition-transform active:scale-95 flex items-center justify-center gap-2 hover:opacity-75 mb-10">
                 Whishlist
                 <IoMdHeartEmpty size={20} />
-              </button>
+              </button> */}
               {/* WHISHLIST BUTTON END */}
 
               <div>

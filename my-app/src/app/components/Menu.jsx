@@ -69,7 +69,7 @@ const Menu = ({ categoryData }) => {
                 >
                   <span>{subItem.attributes.name}</span>
                   <span className="text-black">
-                    {`(${subItem.attributes.products.data.length})`}
+                    {`(${subItem?.attributes?.products?.data?.length})`}
                   </span>
                 </Link>
               ))}

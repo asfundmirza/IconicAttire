@@ -109,7 +109,6 @@ const Header = () => {
             alt="site logo"
             className="w-40px md:w-[140px]"
           />
-          {/* <img src={Sitelogo} className="w-[40px] md:w-[60px]" /> */}
         </Link>
 
         <Menu categoryData={categoryData} />
@@ -142,7 +141,7 @@ const Header = () => {
                     </div>
                     <div className="flex w-full justify-center mt-5">
                       <Link href="/cart">
-                        <button className="flex py-2 px-4 text-center font-bold bg-secondary-color rounded-xl cursor-pointer">
+                        <button className="flex py-2 px-4 text-center font-bold text-white bg-btn-color hover:bg-btnhover-color rounded-xl cursor-pointer">
                           View Cart
                         </button>
                       </Link>

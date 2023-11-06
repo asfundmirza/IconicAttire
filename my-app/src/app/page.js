@@ -4,7 +4,10 @@ import modelimage from "../../public/model.svg";
 import WhiteShirt from "../../public/long-shirt_white_FRONT.png";
 import BlackJacket from "../../public/black_FRONT.png";
 import NavyPant from "../../public/pants_navy_FRONT.png";
-import profile from "../../public/images/profile.jpg";
+import profile from "../../public/images/actor.svg";
+import profile2 from "../../public/images/advocate.svg";
+import profile3 from "../../public/images/army-general.svg";
+
 import winter from "../../public/winter.jpg";
 import upcoming from "../../public/upcoming.jpg";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -95,140 +98,37 @@ export default function Home() {
         </div>
 
         <Wrapper>
-        <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-4 space-y-4 md:space-y-0 py-[4rem]">
-        {/* overlay example */}
-<div className="relative group">
-  <Image src={winter} alt="winter" className="w-full h-auto hover:blur-[10px] rounded-md" />
-  <div className="absolute inset-0 bg-black opacity-100 md:opacity-0 group-hover:opacity-100 bg-opacity-30 md:bg-opacity-0 cursor-pointer group-hover:bg-opacity-40 transition duration-600 ease-in  flex items-center justify-center rounded-md">
-    <p className="font-custom-font font-medium text-2xl md:text-4xl text-white">Winter Sale</p>
-  </div>
-</div>
-{/* overlay example */}
-<div className="relative group">
-  <Image src={upcoming} alt="upcoming" className="w-full h-auto hover:blur-[10px] rounded-md" />
-  <div className="absolute inset-0 bg-black opacity-100 md:opacity-0 group-hover:opacity-100 bg-opacity-30  md:bg-opacity-0 cursor-pointer group-hover:bg-opacity-40 transition duration-600 ease-in  flex items-center justify-center rounded-md">
-    <p className="font-custom-font font-medium text-2xl md:text-4xl text-white ">Upcoming Season</p>
-  </div>
-</div>
-
-
-
-
-        </div>
+          <div className="w-full flex flex-col md:flex-row space-x-0 md:space-x-4 space-y-4 md:space-y-0 py-[4rem]">
+            {/* overlay example */}
+            <div className="relative group">
+              <Image
+                src={winter}
+                alt="winter"
+                className="w-full h-auto hover:blur-[10px] rounded-md"
+              />
+              <div className="absolute inset-0 bg-black opacity-100 md:opacity-0 group-hover:opacity-100 bg-opacity-30 md:bg-opacity-0 cursor-pointer group-hover:bg-opacity-40 transition duration-600 ease-in  flex items-center justify-center rounded-md">
+                <p className="font-custom-font font-medium text-2xl md:text-4xl text-white">
+                  Winter Sale
+                </p>
+              </div>
+            </div>
+            {/* overlay example */}
+            <div className="relative group">
+              <Image
+                src={upcoming}
+                alt="upcoming"
+                className="w-full h-auto hover:blur-[10px] rounded-md"
+              />
+              <div className="absolute inset-0 bg-black opacity-100 md:opacity-0 group-hover:opacity-100 bg-opacity-30  md:bg-opacity-0 cursor-pointer group-hover:bg-opacity-40 transition duration-600 ease-in  flex items-center justify-center rounded-md">
+                <p className="font-custom-font font-medium text-2xl md:text-4xl text-white ">
+                  Upcoming Season
+                </p>
+              </div>
+            </div>
+          </div>
         </Wrapper>
 
         <Wrapper>
-         
-          {/* Stats */}
-          {/* <section className="text-gray-300 body-font ">
-            <div className="container px-5 py-13 mx-auto"> */}
-          {/* <div className="text-center text-5xl text-black mb-9 ">STATS</div> */}
-          {/* <div className="flex flex-wrap bg-primary-color rounded-lg -m-4 py-6 text-center">
-                <div className="p-4 sm:w-1/4 w-1/2">
-                  <h2 className="title-font font-medium sm:text-4xl text-3xl text-white">
-                    2.7K
-                  </h2>
-                  <p className="leading-relaxed">Users</p>
-                </div>
-                <div className="p-4 sm:w-1/4 w-1/2">
-                  <h2 className="title-font font-medium sm:text-4xl text-3xl text-white">
-                    1.8K
-                  </h2>
-                  <p className="leading-relaxed">Subscribes</p>
-                </div>
-                <div className="p-4 sm:w-1/4 w-1/2">
-                  <h2 className="title-font font-medium sm:text-4xl text-3xl text-white">
-                    3.5K
-                  </h2>
-                  <p className="leading-relaxed">Purchase</p>
-                </div>
-                <div className="p-4 sm:w-1/4 w-1/2">
-                  <h2 className="title-font font-medium sm:text-4xl text-3xl text-white">
-                    15
-                  </h2>
-                  <p className="leading-relaxed">Products</p>
-                </div>
-              </div>
-            </div>
-          </section> */}
-
-          {/* pics description */}
-
-          {/* <section className="text-gray-600 body-font">
-            <div className="container px-5 py-24 mx-auto">
-              <Link href={"/category/shirts"}>
-                <button className="flex mx-auto mb-20 text-black font-semibold bg-secondary-color border-0 py-2 px-8 focus:outline-none  rounded text-lg">
-                  Explore More
-                </button>
-              </Link>
-              <div className="flex items-center lg:w-4/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col">
-                <div className="h-[300px] w-[300px] md:h-[500px] md:w-[500px] sm:mr-10 inline-flex items-center justify-center rounded-md bg-slate-50  flex-shrink-0">
-                  <Image
-                    src={WhiteShirt}
-                    alt="whiteshirt"
-                    className="object-contain"
-                  />
-                </div>
-                <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                  <h2 className="text-gray-900 text-lg title-font font-medium mb-2">
-                    White Shirt - Long sleeves
-                  </h2>
-                  <p className="leading-relaxed text-base">
-                    Introducing the ultimate long sleeve shirt that’s bound to
-                    steal hearts and turn heads. Impeccable craftsmanship, clean
-                    design, and a touch of color. This shirt is not just
-                    fashion; it’s an instant outfit upgrade. Elevate your style
-                    effortlessly, whether it’s a casual brunch or a night out on
-                    the town. Available in different sizes and colors.
-                  </p>
-                </div>
-              </div>
-              <div className="flex items-center lg:w-4/5 mx-auto border-b pb-10 mb-10 border-gray-200 sm:flex-row flex-col">
-                <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                  <h2 className="text-gray-900 text-lg title-font font-medium mb-2">
-                    Navy Pants
-                  </h2>
-                  <p className="leading-relaxed text-base">
-                    Impeccably crafted and available in a stunning array of
-                    colors, these pants are designed to make you stand out.
-                    Experience the perfect blend of quality and fashion, all in
-                    one pair of pants. Pairs perfectly with the GEN Jacket.
-                  </p>
-                </div>
-                <div className="h-[300px] w-[300px] md:h-[500px] md:w-[500px] sm:order-none order-first  sm:ml-10 inline-flex items-center justify-center rounded-md bg-slate-50  flex-shrink-0">
-                  <Image
-                    src={NavyPant}
-                    alt="whiteshirt"
-                    className="object-contain"
-                  />
-                </div>
-              </div>
-              <div className="flex items-center lg:w-4/5 mx-auto sm:flex-row flex-col">
-                <div className="h-[300px] w-[300px] md:h-[500px] md:w-[500px] sm:mr-10 inline-flex items-center justify-center rounded-md bg-slate-50  flex-shrink-0">
-                  <Image
-                    src={BlackJacket}
-                    alt="whiteshirt"
-                    className="object-contain"
-                  />
-                </div>
-                <div className="flex-grow sm:text-left text-center mt-6 sm:mt-0">
-                  <h2 className="text-gray-900 text-lg title-font font-medium mb-2">
-                    Black Jacket
-                  </h2>
-                  <p className="leading-relaxed text-base">
-                    Impeccably crafted and available in a stunning array of
-                    colors, these jackets are designed as a statement of your
-                    outfit. Perfectly paired with the GEN pants but also
-                    beautiful with any other bottom item and T-shirts or shirt.
-                    Experience the perfect blend of quality and fashion and
-                    enjoy mixture between an elegant and casual look filled with
-                    class.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </section> */}
-
           {/* testimonial */}
           <section className="text-gray-600 body-font">
             <div className="container px-5 pb-24 mx-auto">
@@ -261,7 +161,7 @@ export default function Home() {
                     <Image
                       alt="testimonial"
                       className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block  border-gray-200 "
-                      src={profile}
+                      src={profile2}
                     />
                     <p className="leading-relaxed">
                       I can't praise this clothing brand enough. The attention
@@ -280,7 +180,7 @@ export default function Home() {
                     <Image
                       alt="testimonial"
                       className="w-20 h-20 mb-8 object-cover object-center rounded-full inline-block  border-gray-200 "
-                      src={profile}
+                      src={profile3}
                     />
                     <p className="leading-relaxed">
                       I've been a loyal customer for years, and I must say that
@@ -299,8 +199,6 @@ export default function Home() {
             </div>
           </section>
         </Wrapper>
-        
-        
       </div>
     </div>
   );

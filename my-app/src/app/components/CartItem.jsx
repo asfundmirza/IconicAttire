@@ -56,7 +56,7 @@ const CartItem = ({ data }) => {
                   onClick={() =>
                     cart.removeOneFromCart(data?.product?.id, data?.size)
                   }
-                  className="bg-primary-color w-6 h-6 rounded-lg flex items-center justify-center text-center hover:bg-gray-600 text-white"
+                  className="bg-btn-color hover:bg-btnhover-color w-6 h-6 rounded-lg flex items-center justify-center text-center  text-white"
                 >
                   -
                 </button>
@@ -69,7 +69,7 @@ const CartItem = ({ data }) => {
                       data?.quantity
                     )
                   }
-                  className="bg-primary-color w-6 h-6 rounded-lg flex items-center justify-center hover:bg-gray-600 text-center text-white"
+                  className="bg-btn-color hover:bg-btnhover-color w-6 h-6 rounded-lg flex items-center justify-center  text-center text-white"
                 >
                   +
                 </button>
